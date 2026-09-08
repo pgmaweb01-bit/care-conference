@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent, type ReactNode } from "react";
-import { Mic, User } from "lucide-react";
+import { Menu, Mic, User, X } from "lucide-react";
 
 const TITLE = "The Care Conference 2026 | The Purple Global Mission";
 const DESCRIPTION =
@@ -184,6 +184,7 @@ function ConferencePage() {
   const [formType, setFormType] = useState<"attendee" | "speaker">("attendee");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ msg: string; ok: boolean } | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -267,7 +268,7 @@ function ConferencePage() {
     <div className="mx-auto max-w-[1440px]">
       {/* Masthead */}
       <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/92 backdrop-blur-md">
-        <div className="flex flex-wrap items-center justify-between gap-4 px-[5vw] py-4">
+        <div className="flex items-center justify-between px-[5vw] py-4">
           <a href="/" className="flex items-center">
             <img
               src="/cropped-3-768x242.webp"
@@ -277,7 +278,7 @@ function ConferencePage() {
           </a>
           <nav
             aria-label="Page navigation"
-            className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[13px] font-medium"
+            className="hidden items-center gap-x-7 text-[13px] font-medium md:flex"
           >
             <a
               href="#about"
@@ -304,7 +305,50 @@ function ConferencePage() {
               Register
             </a>
           </nav>
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center text-primary md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+        {mobileOpen && (
+          <nav
+            aria-label="Mobile navigation"
+            className="flex flex-col gap-4 border-t border-primary/10 px-[5vw] pb-4 pt-3 text-[14px] font-medium md:hidden"
+          >
+            <a
+              href="#about"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              About
+            </a>
+            <a
+              href="#programme"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              Programme
+            </a>
+            <a
+              href="#siderooms"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              Side Rooms
+            </a>
+            <a
+              href="#register"
+              onClick={() => setMobileOpen(false)}
+              className="display bg-primary px-5 py-2.5 text-center text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-panel"
+            >
+              Register
+            </a>
+          </nav>
+        )}
       </header>
 
       {/* Hero */}
