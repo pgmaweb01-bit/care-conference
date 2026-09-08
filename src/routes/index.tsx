@@ -299,12 +299,6 @@ function ConferencePage() {
             </a>
             <a
               href="#register"
-              className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
-            >
-              Register
-            </a>
-            <a
-              href="#register"
               className="display bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-panel"
             >
               Register
