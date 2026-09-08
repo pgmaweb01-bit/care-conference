@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Menu, Mic, User, X } from "lucide-react";
 
 const TITLE = "The Care Conference 2026 | The Purple Global Mission";
@@ -180,11 +180,31 @@ function Kicker({ children, onDark = false }: { children: ReactNode; onDark?: bo
   );
 }
 
+const CONFERENCE_DATE = new Date("2026-11-19T08:00:00+01:00");
+
 function ConferencePage() {
   const [formType, setFormType] = useState<"attendee" | "speaker">("attendee");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ msg: string; ok: boolean } | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    function tick() {
+      const now = Date.now();
+      const diff = Math.max(0, CONFERENCE_DATE.getTime() - now);
+      setCountdown({
+        days: Math.floor(diff / 86_400_000),
+        hours: Math.floor((diff % 86_400_000) / 3_600_000),
+        minutes: Math.floor((diff % 3_600_000) / 60_000),
+        seconds: Math.floor((diff % 60_000) / 1_000),
+      });
+    }
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -446,6 +466,31 @@ function ConferencePage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gold/15 bg-primary-foreground/[0.04] backdrop-blur-sm">
+          <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-6 px-[5vw] py-5 sm:gap-10">
+            <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+              Counting down
+            </span>
+            {(
+              [
+                ["days", countdown.days],
+                ["hours", countdown.hours],
+                ["min", countdown.minutes],
+                ["sec", countdown.seconds],
+              ] as const
+            ).map(([label, value]) => (
+              <div key={label} className="flex flex-col items-center">
+                <span className="display text-[32px] font-bold leading-none text-primary-foreground tabular-nums sm:text-[40px]">
+                  {String(value).padStart(2, "0")}
+                </span>
+                <span className="mt-1 text-[10px] font-semibold tracking-[0.18em] text-primary-foreground/50 uppercase">
+                  {label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
