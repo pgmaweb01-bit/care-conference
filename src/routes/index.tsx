@@ -632,10 +632,11 @@ function ConferencePage() {
           {ROOMS.map((room, i) => (
             <article key={room.letter} className="flex flex-col gap-5 bg-primary p-7 sm:flex-row">
               <div className="w-full sm:w-[38%] sm:shrink-0">
-                <PhotoSlot
-                  label={`Room ${String.fromCharCode(65 + i)} image`}
-                  ratio="4 / 3"
-                  onDark
+                <img
+                  src={`/room-${room.letter.slice(-1).toLowerCase()}.svg`}
+                  alt={room.title}
+                  className="w-full border border-gold/20 object-cover"
+                  style={{ aspectRatio: "4 / 3" }}
                 />
               </div>
               <div className="flex flex-1 flex-col">

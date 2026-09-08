@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" fill="none">
+  <rect width="640" height="480" fill="#2D1B69"/>
+  <rect x="0" y="340" width="640" height="140" fill="#1a0f40"/>
+  <rect x="40" y="360" width="120" height="100" rx="4" fill="#3D2880"/>
+  <rect x="180" y="370" width="120" height="90" rx="4" fill="#3D2880"/>
+  <rect x="340" y="360" width="120" height="100" rx="4" fill="#3D2880"/>
+  <rect x="480" y="370" width="120" height="90" rx="4" fill="#3D2880"/>
+  <rect x="80" y="100" width="480" height="220" rx="8" fill="#0d0a1a" stroke="#C9A84C" stroke-width="2"/>
+  <rect x="96" y="116" width="448" height="188" rx="4" fill="#1a0f40"/>
+  <text x="320" y="180" text-anchor="middle" font-family="Poppins,sans-serif" font-size="20" font-weight="700" fill="#C9A84C">ROOM B</text>
+  <text x="320" y="218" text-anchor="middle" font-family="Poppins,sans-serif" font-size="26" font-weight="700" fill="#F7F5F0">The Journey Between</text>
+  <text x="320" y="258" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#C9A84C" opacity="0.8">Care Coordination and Continuity of Care</text>
+  <rect x="290" y="320" width="60" height="20" rx="2" fill="#C9A84C" opacity="0.6"/>
+  <circle cx="320" cy="390" r="4" fill="#C9A84C" opacity="0.5"/>
+  <circle cx="320" cy="410" r="3" fill="#C9A84C" opacity="0.3"/>
+</svg>
