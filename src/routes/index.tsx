@@ -268,14 +268,13 @@ function ConferencePage() {
       {/* Masthead */}
       <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/92 backdrop-blur-md">
         <div className="flex flex-wrap items-center justify-between gap-4 px-[5vw] py-4">
-          <div className="display flex items-baseline gap-3">
-            <span className="text-[15px] font-bold tracking-[0.02em] text-primary">
-              The Purple Global Mission
-            </span>
-            <span className="hidden text-[11px] font-semibold tracking-[0.18em] text-gold-dim uppercase sm:inline">
-              Est. Lagos
-            </span>
-          </div>
+          <a href="/" className="flex items-center">
+            <img
+              src="/cropped-3-768x242.webp"
+              alt="The Purple Global Mission"
+              className="h-8 w-auto md:h-10"
+            />
+          </a>
           <nav
             aria-label="Page navigation"
             className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[13px] font-medium"
