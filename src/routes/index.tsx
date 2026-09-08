@@ -22,6 +22,27 @@ export const Route = createFileRoute("/")({
 
 const CONF_EMAIL = "mycareassistantconference@gmail.com";
 
+const ROOM_OPTIONS = [
+  "Room A: Who Cares for Nigeria? (Workforce)",
+  "Room B: The Journey Between (Coordination)",
+  "Room C: You Cannot Fund What You Cannot Count (Digital)",
+  "Room D: Paying for the Load Bearing Layer (Financing)",
+];
+
+const SECTORS = [
+  "Government or regulator",
+  "Health facility or clinical practice",
+  "Home or community based care provider",
+  "Insurance, HMO or financing",
+  "Development partner or multilateral",
+  "Academia or research",
+  "Technology",
+  "Media",
+  "Civil society or advocacy",
+  "Family caregiver or individual",
+  "Other",
+];
+
 const PROGRAMME = [
   {
     time: "08:00",
@@ -184,6 +205,9 @@ function ConferencePage() {
       Profession: get("profession"),
       Specialty: get("specialty"),
       Position: get("position"),
+      "First choice": get("firstChoice"),
+      "Second choice": get("secondChoice"),
+      Sector: get("sector"),
       "First-time attendee": get("firstTime"),
       "Special needs": get("specialNeeds"),
     };
@@ -196,12 +220,24 @@ function ConferencePage() {
       "Country",
       "Organization",
       "Profession",
+      "First choice",
+      "Second choice",
+      "Sector",
     ];
     const missing = required.filter((k) => !answers[k]);
     if (missing.length) {
       setIsSubmitting(false);
       setStatus({
         msg: `Please complete all required fields before registering. Missing: ${missing.join(", ")}.`,
+        ok: false,
+      });
+      return;
+    }
+
+    if (answers["First choice"] === answers["Second choice"]) {
+      setIsSubmitting(false);
+      setStatus({
+        msg: "Your first and second choice side rooms must be different.",
         ok: false,
       });
       return;
@@ -718,6 +754,62 @@ function ConferencePage() {
                   Conference Information
                 </h2>
                 <div className="mt-5 space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <label className="block space-y-1.5">
+                      <span className="block text-xs font-medium text-muted-foreground">
+                        Side room, first choice<span className="ml-0.5 text-destructive">*</span>
+                      </span>
+                      <select
+                        name="firstChoice"
+                        required
+                        defaultValue=""
+                        className="w-full rounded-lg border border-input bg-card px-3.5 py-2.5 text-sm text-foreground shadow-sm transition-all placeholder:text-muted-foreground/50 focus:border-ring focus:outline-none focus:shadow-[0_0_0_3px_oklch(0.743_0.099_84.5/0.1)]"
+                      >
+                        <option value="" disabled>
+                          Select a room
+                        </option>
+                        {ROOM_OPTIONS.map((o) => (
+                          <option key={o}>{o}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block space-y-1.5">
+                      <span className="block text-xs font-medium text-muted-foreground">
+                        Side room, second choice<span className="ml-0.5 text-destructive">*</span>
+                      </span>
+                      <select
+                        name="secondChoice"
+                        required
+                        defaultValue=""
+                        className="w-full rounded-lg border border-input bg-card px-3.5 py-2.5 text-sm text-foreground shadow-sm transition-all placeholder:text-muted-foreground/50 focus:border-ring focus:outline-none focus:shadow-[0_0_0_3px_oklch(0.743_0.099_84.5/0.1)]"
+                      >
+                        <option value="" disabled>
+                          Select a room
+                        </option>
+                        {ROOM_OPTIONS.map((o) => (
+                          <option key={o}>{o}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  <label className="block space-y-1.5">
+                    <span className="block text-xs font-medium text-muted-foreground">
+                      Sector<span className="ml-0.5 text-destructive">*</span>
+                    </span>
+                    <select
+                      name="sector"
+                      required
+                      defaultValue=""
+                      className="w-full rounded-lg border border-input bg-card px-3.5 py-2.5 text-sm text-foreground shadow-sm transition-all placeholder:text-muted-foreground/50 focus:border-ring focus:outline-none focus:shadow-[0_0_0_3px_oklch(0.743_0.099_84.5/0.1)]"
+                    >
+                      <option value="" disabled>
+                        Select your sector
+                      </option>
+                      {SECTORS.map((s) => (
+                        <option key={s}>{s}</option>
+                      ))}
+                    </select>
+                  </label>
                   <fieldset>
                     <legend className="mb-2 text-sm font-medium text-foreground">
                       First-time attendee?
