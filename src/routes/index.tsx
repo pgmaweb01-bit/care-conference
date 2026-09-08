@@ -355,6 +355,11 @@ function ConferencePage() {
       <section className="relative isolate overflow-hidden border-b border-gold/25 bg-primary text-primary-foreground">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[linear-gradient(165deg,#1a0f40_0%,#2D1B69_48%,#3D2880_100%)]" />
+          <img
+            src="/Hero Image.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-overlay"
+          />
           <div className="absolute -top-28 right-[6%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.32),transparent_68%)] blur-2xl" />
           <div className="absolute -bottom-44 -left-28 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.2),transparent_68%)] blur-2xl" />
           <div
@@ -458,7 +463,12 @@ function ConferencePage() {
               Chair Centre, Lagos.
             </p>
             <div className="mt-8 hidden lg:block">
-              <PhotoSlot label="Conference image" ratio="1 / 1" />
+              <img
+                src="/Conference Image.webp"
+                alt="Care Conference"
+                className="w-full border border-primary/10 object-cover"
+                style={{ aspectRatio: "1 / 1" }}
+              />
             </div>
           </div>
 
@@ -503,7 +513,12 @@ function ConferencePage() {
               convening.
             </p>
             <div className="mt-8 hidden lg:block">
-              <PhotoSlot label="Plenary photo" ratio="1 / 1" />
+              <img
+                src="/Plenary photo.webp"
+                alt="Plenary session"
+                className="w-full border border-primary/10 object-cover"
+                style={{ aspectRatio: "1 / 1" }}
+              />
             </div>
           </div>
 
