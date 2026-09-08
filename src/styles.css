@@ -76,30 +76,30 @@ html {
   --radius: 0.1875rem;
   --font-display: "Poppins", ui-sans-serif, sans-serif;
   --font-body: "Inter", ui-sans-serif, sans-serif;
-  /* Brand: navy #15315C, panel navy #213D66, gold #C9A84C, dim gold #A8862F, warm white #F7F5F0, ink #1C2333 */
+  /* Brand: dark purple #2D1B69, panel purple #3D2880, gold #C9A84C, dim gold #A8862F, warm white #F7F5F0, ink #1C2333 */
   --background: oklch(0.972 0.006 85.87);
   --foreground: oklch(0.246 0.024 268.2);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.246 0.024 268.2);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.246 0.024 268.2);
-  --primary: oklch(0.331 0.075 262.6);
+  --primary: oklch(0.25 0.12 295);
   --primary-foreground: oklch(1 0 0);
-  --panel: oklch(0.383 0.068 262.9);
+  --panel: oklch(0.3 0.12 295);
   --panel-foreground: oklch(1 0 0);
   --gold: oklch(0.743 0.099 84.5);
   --gold-bright: oklch(0.796 0.096 85.6);
   --gold-dim: oklch(0.638 0.102 84.1);
   --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.331 0.075 262.6);
+  --secondary-foreground: oklch(0.25 0.12 295);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.488 0.024 265.6);
   --accent: oklch(0.743 0.099 84.5);
-  --accent-foreground: oklch(0.331 0.075 262.6);
+  --accent-foreground: oklch(0.25 0.12 295);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.331 0.075 262.6 / 14%);
-  --input: oklch(0.331 0.075 262.6 / 22%);
+  --border: oklch(0.25 0.12 295 / 14%);
+  --input: oklch(0.25 0.12 295 / 22%);
   --ring: oklch(0.743 0.099 84.5);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -108,7 +108,7 @@ html {
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary: oklch(0.2 0.1 295);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
@@ -163,7 +163,10 @@ html {
     line-height: 1.6;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
   }
 }

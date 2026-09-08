@@ -316,7 +316,7 @@ function ConferencePage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-gold/25 bg-primary text-primary-foreground">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[linear-gradient(165deg,#0d1f3e_0%,#15315c_48%,#1d3a68_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(165deg,#1a0f40_0%,#2D1B69_48%,#3D2880_100%)]" />
           <div className="absolute -top-28 right-[6%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.32),transparent_68%)] blur-2xl" />
           <div className="absolute -bottom-44 -left-28 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.2),transparent_68%)] blur-2xl" />
           <div
