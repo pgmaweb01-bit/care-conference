@@ -126,46 +126,7 @@ const ROOMS = [
 ];
 
 const HERO_PATTERN =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M48 0 0 48 M96 0 0 96' stroke='%23C9A84C' stroke-width='1' fill='none'/%3E%3C/svg%3E\")";
-
-/* Reserved space for photography, replaced when images are supplied. */
-function PhotoSlot({
-  label,
-  ratio = "4 / 3",
-  onDark = false,
-  className = "",
-}: {
-  label: string;
-  ratio?: string;
-  onDark?: boolean;
-  className?: string;
-}) {
-  return (
-    <figure
-      style={{ aspectRatio: ratio }}
-      aria-hidden="true"
-      className={`relative flex w-full items-end overflow-hidden ${
-        onDark ? "bg-primary-foreground/[0.06]" : "bg-primary/[0.05]"
-      } ${className}`}
-    >
-      <span
-        className={`absolute inset-0 border ${onDark ? "border-gold/35" : "border-primary/15"}`}
-      />
-      <span
-        className={`absolute top-1/2 left-1/2 h-px w-[130%] -translate-x-1/2 -translate-y-1/2 rotate-[24deg] ${
-          onDark ? "bg-gold/20" : "bg-primary/10"
-        }`}
-      />
-      <figcaption
-        className={`display relative m-4 px-2.5 py-1.5 text-[10.5px] font-semibold tracking-[0.16em] uppercase ${
-          onDark ? "bg-primary text-gold" : "bg-background text-primary/70"
-        }`}
-      >
-        {label}
-      </figcaption>
-    </figure>
-  );
-}
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M48 0 0 48 M96 0 0 96' stroke='%23B8960F' stroke-width='1' fill='none'/%3E%3C/svg%3E\")";
 
 function Kicker({ children, onDark = false }: { children: ReactNode; onDark?: boolean }) {
   return (
@@ -375,27 +336,13 @@ function ConferencePage() {
       <section className="relative isolate overflow-hidden border-b border-gold/25 bg-primary text-primary-foreground">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[linear-gradient(165deg,#1a0f40_0%,#2D1B69_48%,#3D2880_100%)]" />
-          <img
-            src="/Hero Image.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-overlay"
-          />
-          <div className="absolute -top-28 right-[6%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.32),transparent_68%)] blur-2xl" />
-          <div className="absolute -bottom-44 -left-28 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.2),transparent_68%)] blur-2xl" />
+          <div className="absolute -top-28 right-[6%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(184,150,15,0.30),transparent_68%)] blur-2xl" />
+          <div className="absolute -bottom-44 -left-28 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(184,150,15,0.18),transparent_68%)] blur-2xl" />
           <div
-            className="absolute inset-0 opacity-[0.05]"
+            className="absolute inset-0 opacity-[0.04]"
             style={{ backgroundImage: HERO_PATTERN }}
           />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-[-2vw] -z-10 overflow-hidden text-center select-none"
-        >
-          <p className="display text-[clamp(120px,23vw,320px)] leading-none font-bold tracking-[-0.05em] text-transparent [-webkit-text-stroke:1.5px_rgba(247,245,240,0.10)]">
-            CARE 2026
-          </p>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-yellow/60 to-transparent" />
         </div>
 
         <div className="mx-auto max-w-[1440px] px-[5vw] pt-16 pb-20 sm:pt-20 lg:pt-24 lg:pb-24">
@@ -572,7 +519,7 @@ function ConferencePage() {
               {PROGRAMME.map((slot) => (
                 <li
                   key={slot.time}
-                  className="group grid grid-cols-[64px_1fr] gap-4 border-b border-primary/15 py-6 transition-colors hover:bg-primary/[0.025] sm:grid-cols-[104px_1fr] sm:gap-8"
+                  className="group grid grid-cols-[64px_1fr] gap-4 border-b border-primary/15 py-8 transition-colors hover:bg-primary/[0.025] sm:grid-cols-[104px_1fr] sm:gap-8"
                 >
                   <div className="display pt-1 text-[15px] font-bold tracking-[-0.01em] text-gold-dim">
                     {slot.time}
@@ -635,7 +582,7 @@ function ConferencePage() {
                 <img
                   src={`/room-${room.letter.slice(-1).toLowerCase()}.svg`}
                   alt={room.title}
-                  className="w-full border border-gold/20 object-cover"
+                  className="w-full rounded-sm border border-gold/20 object-cover"
                   style={{ aspectRatio: "4 / 3" }}
                 />
               </div>
@@ -987,14 +934,14 @@ function ConferencePage() {
 
       {/* Colophon */}
       <footer className="border-t border-primary/15 bg-primary px-[5vw] py-14 text-[14.5px] text-primary-foreground/85">
-        <div className="grid gap-y-9 border-b border-gold/25 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
-            <h4 className="display mb-3 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
-              Convener
-            </h4>
-            <p className="leading-relaxed">
-              The Purple Global Mission
-              <br />
+        <div className="grid gap-y-9 border-b border-gold/25 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-1">
+            <img
+              src="/cropped-3-768x242.webp"
+              alt="The Purple Global Mission"
+              className="mb-4 h-8 w-auto"
+            />
+            <p className="text-[13px] leading-relaxed text-primary-foreground/60">
               An independent, non partisan convener
               <br />
               <a
@@ -1031,6 +978,33 @@ function ConferencePage() {
               <br />
               Thursday 19 November 2026
             </p>
+          </div>
+          <div>
+            <h4 className="display mb-3 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
+              Quick links
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#about" className="transition-colors hover:text-gold">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#programme" className="transition-colors hover:text-gold">
+                  Programme
+                </a>
+              </li>
+              <li>
+                <a href="#siderooms" className="transition-colors hover:text-gold">
+                  Side Rooms
+                </a>
+              </li>
+              <li>
+                <a href="#register" className="transition-colors hover:text-gold">
+                  Register
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <p className="mt-8 text-[12.5px] text-primary-foreground/55">
