@@ -87,9 +87,9 @@ html {
   --primary-foreground: oklch(1 0 0);
   --panel: oklch(0.3 0.12 295);
   --panel-foreground: oklch(1 0 0);
-  --gold: oklch(0.65 0.14 85);
-  --gold-bright: oklch(0.72 0.14 85);
-  --gold-dim: oklch(0.55 0.12 85);
+  --gold: oklch(0.72 0.15 85);
+  --gold-bright: oklch(0.78 0.15 85);
+  --gold-dim: oklch(0.62 0.13 85);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.25 0.12 295);
   --muted: oklch(0.968 0.007 247.896);
