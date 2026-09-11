@@ -20,12 +20,12 @@ export const Route = createFileRoute("/")({
   component: ConferencePage,
 });
 
-const CONF_EMAIL = "mycareassistantconference@gmail.com";
+const CONF_EMAIL = "thepurpleglobalmission@gmail.com";
 
 const ROOM_OPTIONS = [
   "Room A: Who Cares for Nigeria? (Workforce)",
   "Room B: The Journey Between (Coordination)",
-  "Room C: You Cannot Fund What You Cannot Count (Digital)",
+  "Room C: You Cannot Finance What You Cannot Count (Digital)",
   "Room D: Paying for the Load Bearing Layer (Financing)",
 ];
 
@@ -98,6 +98,57 @@ const PROGRAMME = [
   { time: "17:45", title: "Close" },
 ];
 
+const SPEAKERS = [
+  {
+    name: "Dr. Adeola Onakoya",
+    role: "Keynote Speaker",
+    org: "National Health Authority",
+    topic: "Care as Infrastructure: The National Vision",
+  },
+  {
+    name: "Prof. Amina Mohammed",
+    role: "Panel Chair",
+    org: "University of Lagos, Faculty of Medicine",
+    topic: "The First Caregivers: Lived Experience",
+  },
+  {
+    name: "Barr. Chukwuma Eze",
+    role: "Panelist",
+    org: "Federal Ministry of Health",
+    topic: "Regulatory Pathways for Home Care",
+  },
+  {
+    name: "Dr. Fatima Bello",
+    role: "Panelist",
+    org: "Nigeria Health Insurance Authority",
+    topic: "Financing Care: Pooled Models",
+  },
+  {
+    name: "Mr. Olusegun Adebayo",
+    role: "Panelist",
+    org: "CareNet Technologies",
+    topic: "Digital Health Infrastructure",
+  },
+  {
+    name: "Mrs. Ngozi Okafor",
+    role: "Panelist",
+    org: "Homecare Nigeria Foundation",
+    topic: "Workforce Development and Protection",
+  },
+  {
+    name: "Dr. Emeka Nwosu",
+    role: "Panelist",
+    org: "Lagos State Primary Health Care Board",
+    topic: "Coordination and Continuity of Care",
+  },
+  {
+    name: "Ms. Aisha Dikko",
+    role: "Moderator",
+    org: "The Purple Global Mission",
+    topic: "Closing Plenary and Next Steps",
+  },
+];
+
 const ROOMS = [
   {
     letter: "Room A",
@@ -113,9 +164,9 @@ const ROOMS = [
   },
   {
     letter: "Room C",
-    title: "You Cannot Fund What You Cannot Count",
+    title: "You Cannot Finance What You Cannot Count",
     layer: "Digital Health Infrastructure and Care Data Systems",
-    body: "The data layer beneath every financing decision: national digital architecture, claims data, interoperability standards, and the technology builders creating care records infrastructure.",
+    body: "Nigeria has no publicly accessible national home care dataset, and no consolidated public register of home care providers is in operation today. A register of who provides care is not a record of what care is delivered. This room convenes the data layer beneath every financing decision: national digital architecture, claims data, interoperability standards, and the technology builders creating care records infrastructure.",
   },
   {
     letter: "Room D",
@@ -229,7 +280,7 @@ function ConferencePage() {
       .filter(([, v]) => v)
       .map(([k, v]) => `${k}: ${v}`);
     const body =
-      "Registration — The Care Conference 2026%0D%0A%0D%0A" +
+      "Registration - The Care Conference 2026%0D%0A%0D%0A" +
       encodeURIComponent(lines.join("\n")).replace(/%0A/g, "%0D%0A");
     window.location.href =
       `mailto:${CONF_EMAIL}?subject=` +
@@ -274,6 +325,12 @@ function ConferencePage() {
               Programme
             </a>
             <a
+              href="#speakers"
+              className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
+            >
+              Speakers
+            </a>
+            <a
               href="#siderooms"
               className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
             >
@@ -313,6 +370,13 @@ function ConferencePage() {
               className="text-primary/75 transition-colors hover:text-primary"
             >
               Programme
+            </a>
+            <a
+              href="#speakers"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              Speakers
             </a>
             <a
               href="#siderooms"
@@ -489,8 +553,8 @@ function ConferencePage() {
               African health landscape.
             </p>
             <div className="display border-l-2 border-gold pl-4 pt-1 text-[19px] leading-snug font-medium text-primary">
-              More than a conference, Care Conference 2026 is a platform for collective
-              leadership—bringing together those who are shaping the next decade of care.
+              More than a conference, Care Conference 2026 is a platform for collective leadership,
+              bringing together those who are shaping the next decade of care.
             </div>
           </div>
         </div>
@@ -561,6 +625,44 @@ function ConferencePage() {
         </div>
       </section>
 
+      {/* Speakers & Panelists */}
+      <section id="speakers" className="scroll-mt-20 border-b border-primary/15 px-[5vw] py-16">
+        <div className="mb-12 max-w-2xl">
+          <Kicker>Speakers & Panelists</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+            Who&apos;s on stage
+          </h2>
+          <p className="mt-4 max-w-[52ch] text-[15.5px] leading-relaxed text-muted-foreground">
+            Policymakers, clinicians, researchers, innovators, and lived experience voices shaping
+            the conversation on care as infrastructure for Nigeria.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {SPEAKERS.map((s) => (
+            <article
+              key={s.name}
+              className="group flex flex-col border border-primary/10 bg-card p-5 transition-shadow hover:shadow-md"
+            >
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/[0.06] text-[22px] font-bold text-primary/40">
+                {s.name
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")
+                  .slice(0, 2)}
+              </div>
+              <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold-dim uppercase">
+                {s.role}
+              </span>
+              <h3 className="text-[16px] leading-snug font-semibold text-primary">{s.name}</h3>
+              <p className="mt-1 text-[13px] text-muted-foreground">{s.org}</p>
+              <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-muted-foreground/80">
+                {s.topic}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* Side rooms */}
       <section
         id="siderooms"
@@ -623,7 +725,7 @@ function ConferencePage() {
               Register for The Care Conference 2026
             </h1>
             <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-muted-foreground">
-              Care as Infrastructure — Designing Nigeria&apos;s Next Decade of Homecare.
+              Care as Infrastructure: Building a National Position on Homecare for Nigeria
             </p>
             <div className="mt-6 flex gap-2 rounded-xl border border-border bg-card p-1 shadow-sm">
               <button
