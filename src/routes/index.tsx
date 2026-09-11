@@ -566,14 +566,27 @@ function ConferencePage() {
       <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24">
         <div
           aria-hidden="true"
-          className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary/[0.03] select-none"
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url(/Why this conference matters.webp)",
+            backgroundAttachment: "fixed",
+          }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/85" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/50 via-transparent to-primary/90"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary-foreground/[0.03] select-none"
         >
           Why
         </div>
         <div className="relative mx-auto max-w-4xl">
-          <Kicker>Why this Conference Matters</Kicker>
+          <Kicker onDark>Why this Conference Matters</Kicker>
           <blockquote className="mt-8">
-            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.35] font-medium tracking-[-0.01em] text-primary">
+            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.35] font-medium tracking-[-0.01em] text-primary-foreground">
               Care in Nigeria is entering a new phase. Families require stronger support systems,
               healthcare services increasingly depend on continuity beyond hospital visits, and
               digital technology is expanding new possibilities for monitoring, coordination, and
@@ -582,7 +595,7 @@ function ConferencePage() {
           </blockquote>
           <div className="mt-12 grid gap-8 sm:grid-cols-2">
             <div>
-              <p className="text-[15.5px] leading-relaxed text-muted-foreground">
+              <p className="text-[15.5px] leading-relaxed text-primary-foreground/75">
                 As countries advance toward Universal Health Coverage (UHC), a key priority in
                 global health discussions, there is growing recognition that effective health
                 systems must integrate hospitals, home-based care, digital tools, and community
@@ -590,15 +603,15 @@ function ConferencePage() {
               </p>
             </div>
             <div>
-              <p className="text-[15.5px] leading-relaxed text-muted-foreground">
+              <p className="text-[15.5px] leading-relaxed text-primary-foreground/75">
                 Across Africa, rising non-communicable diseases and changing health needs are
                 accelerating conversations on how to deliver coordinated, high-quality care
                 throughout a patient&apos;s journey.
               </p>
             </div>
           </div>
-          <div className="mt-10 border-t border-primary/10 pt-8">
-            <p className="max-w-[60ch] text-[15.5px] leading-relaxed text-muted-foreground">
+          <div className="mt-10 border-t border-primary-foreground/10 pt-8">
+            <p className="max-w-[60ch] text-[15.5px] leading-relaxed text-primary-foreground/75">
               Care Conference 2026 brings these global perspectives and African priorities together,
               convening policymakers, clinicians, innovators, investors, and community leaders to
               explore how Nigeria can strengthen care systems, support its healthcare workforce, and
@@ -698,17 +711,21 @@ function ConferencePage() {
       </section>
 
       {/* Full-bleed image break */}
-      <div className="relative h-[40vh] min-h-[280px] overflow-hidden">
+      <div className="relative h-[45vh] min-h-[320px] overflow-hidden">
         <img
           src="/Conference Image.webp"
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/60" />
-        <div className="absolute inset-0 flex items-center justify-center px-[5vw]">
-          <p className="display max-w-[40ch] text-center text-[clamp(24px,4vw,48px)] leading-[1.1] font-bold tracking-[-0.02em] text-primary-foreground">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-[5vw] text-center">
+          <span className="display mb-4 text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            19 November 2026 &middot; Lagos
+          </span>
+          <p className="display max-w-[44ch] text-[clamp(24px,4vw,48px)] leading-[1.1] font-bold tracking-[-0.02em] text-primary-foreground">
             One day. One room. One <span className="text-gold">National Position</span>.
           </p>
+          <span className="mt-6 h-px w-16 bg-gold/50" />
         </div>
       </div>
 
