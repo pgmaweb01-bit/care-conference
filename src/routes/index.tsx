@@ -512,94 +512,109 @@ function ConferencePage() {
       </section>
 
       {/* About the conference */}
-      <section id="about" className="scroll-mt-20 border-b border-primary/15 px-[5vw] py-16">
-        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[0.8fr_1.9fr]">
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <Kicker>About the conference</Kicker>
-            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-              More than a conference, a platform for collective leadership
-            </h2>
-            <p className="mt-4 max-w-[42ch] text-[15.5px] leading-relaxed text-muted-foreground">
-              Convened by The Purple Global Mission on Thursday 19 November 2026 at IALA Hub, The
-              Chair Centre, Lagos.
-            </p>
-            <div className="mt-8 hidden lg:block">
-              <img
-                src="/Conference Image.webp"
-                alt="Care Conference"
-                className="w-full border border-primary/10 object-cover"
-                style={{ aspectRatio: "1 / 1" }}
-              />
+      <section id="about" className="scroll-mt-20 px-[5vw] py-24">
+        <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="relative">
+            <img
+              src="/Conference Image.webp"
+              alt="Care Conference"
+              className="w-full object-cover"
+              style={{ aspectRatio: "4 / 5" }}
+            />
+            <div className="absolute -bottom-6 -right-4 bg-primary px-6 py-4 sm:-right-8">
+              <span className="display block text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+                19 November 2026
+              </span>
+              <span className="display block text-[11px] font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
+                Lagos, Nigeria
+              </span>
             </div>
           </div>
-
-          <div className="space-y-6 text-[16px] leading-relaxed text-muted-foreground">
-            <p>
-              Care Conference 2026 is a national convening that brings together policymakers, health
-              system leaders, clinicians, innovators, caregivers, investors, researchers, and
-              community advocates committed to strengthening the future of care in Nigeria. At a
-              time when countries around the world are rethinking how care is delivered,
-              coordinated, and sustained, the conference provides a platform for dialogue that
-              connects national priorities with global health conversations on integrated care,
-              workforce development, and Universal Health Coverage.
-            </p>
-            <p>
-              As Nigeria responds to rising non-communicable diseases, evolving population health
-              needs, workforce constraints, and the growing importance of home and community-based
-              care, Care Conference 2026 creates a space for thoughtful exchange, collaboration, and
-              shared learning. The convening brings together diverse voices across policy, practice,
-              innovation, and community systems to explore how care can be strengthened in ways that
-              are resilient, coordinated, and responsive to the realities of the Nigerian and
-              African health landscape.
-            </p>
-            <div className="display border-l-2 border-gold pl-4 pt-1 text-[19px] leading-snug font-medium text-primary">
-              More than a conference, Care Conference 2026 is a platform for collective leadership,
-              bringing together those who are shaping the next decade of care.
+          <div>
+            <Kicker>About the conference</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              More than a conference,
+              <br />a platform for collective
+              <br />
+              <span className="text-gold-dim">leadership</span>
+            </h2>
+            <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-muted-foreground">
+              <p>
+                Care Conference 2026 is a national convening that brings together policymakers,
+                health system leaders, clinicians, innovators, caregivers, investors, researchers,
+                and community advocates committed to strengthening the future of care in Nigeria.
+              </p>
+              <p>
+                At a time when countries around the world are rethinking how care is delivered,
+                coordinated, and sustained, the conference provides a platform for dialogue that
+                connects national priorities with global health conversations on integrated care,
+                workforce development, and Universal Health Coverage.
+              </p>
+            </div>
+            <div className="mt-8 flex items-start gap-4">
+              <span className="mt-1 h-12 w-[3px] shrink-0 bg-gold" />
+              <p className="display text-[17px] leading-snug font-medium text-primary">
+                More than a conference, Care Conference 2026 is a platform for collective
+                leadership, bringing together those who are shaping the next decade of care.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why this Conference Matters */}
-      <section className="relative overflow-hidden border-y border-gold/20 bg-primary px-[5vw] py-24 text-primary-foreground">
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <div className="absolute -top-32 right-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(184,150,15,0.12),transparent_70%)] blur-3xl" />
+      <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24">
+        <div
+          aria-hidden="true"
+          className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary/[0.03] select-none"
+        >
+          Why
         </div>
-        <div className="mx-auto max-w-4xl">
-          <Kicker onDark>Why this Conference Matters</Kicker>
-          <blockquote className="mt-8 border-l-[3px] border-gold pl-6 sm:pl-8">
-            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.3] font-medium tracking-[-0.01em] text-primary-foreground/90">
+        <div className="relative mx-auto max-w-4xl">
+          <Kicker>Why this Conference Matters</Kicker>
+          <blockquote className="mt-8">
+            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.35] font-medium tracking-[-0.01em] text-primary">
               Care in Nigeria is entering a new phase. Families require stronger support systems,
               healthcare services increasingly depend on continuity beyond hospital visits, and
               digital technology is expanding new possibilities for monitoring, coordination, and
               patient-centered care.
             </p>
           </blockquote>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            <p className="text-[15.5px] leading-relaxed text-primary-foreground/72">
-              As countries advance toward Universal Health Coverage (UHC), a key priority in global
-              health discussions, there is growing recognition that effective health systems must
-              integrate hospitals, home-based care, digital tools, and community support.
-            </p>
-            <p className="text-[15.5px] leading-relaxed text-primary-foreground/72">
-              Across Africa, rising non-communicable diseases and changing health needs are
-              accelerating conversations on how to deliver coordinated, high-quality care throughout
-              a patient&apos;s journey.
+          <div className="mt-12 grid gap-8 sm:grid-cols-2">
+            <div>
+              <p className="text-[15.5px] leading-relaxed text-muted-foreground">
+                As countries advance toward Universal Health Coverage (UHC), a key priority in
+                global health discussions, there is growing recognition that effective health
+                systems must integrate hospitals, home-based care, digital tools, and community
+                support.
+              </p>
+            </div>
+            <div>
+              <p className="text-[15.5px] leading-relaxed text-muted-foreground">
+                Across Africa, rising non-communicable diseases and changing health needs are
+                accelerating conversations on how to deliver coordinated, high-quality care
+                throughout a patient&apos;s journey.
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 border-t border-primary/10 pt-8">
+            <p className="max-w-[60ch] text-[15.5px] leading-relaxed text-muted-foreground">
+              Care Conference 2026 brings these global perspectives and African priorities together,
+              convening policymakers, clinicians, innovators, investors, and community leaders to
+              explore how Nigeria can strengthen care systems, support its healthcare workforce, and
+              contribute to the long-term goal of Universal Health Coverage for all.
             </p>
           </div>
-          <p className="mt-8 max-w-[60ch] text-[15.5px] leading-relaxed text-primary-foreground/72">
-            Care Conference 2026 brings these global perspectives and African priorities together,
-            convening policymakers, clinicians, innovators, investors, and community leaders to
-            explore how Nigeria can strengthen care systems, support its healthcare workforce, and
-            contribute to the long-term goal of Universal Health Coverage for all.
-          </p>
         </div>
       </section>
 
       {/* What Delegates Will Gain */}
-      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-24">
-        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+      <section className="px-[5vw] py-24">
+        <div className="grid items-start gap-x-16 gap-y-12 lg:grid-cols-[0.35fr_1fr]">
+          <div className="lg:sticky lg:top-28">
+            <span className="display block text-[80px] font-bold leading-none text-primary/[0.06] sm:text-[120px]">
+              06
+            </span>
             <Kicker>What Delegates Will Gain</Kicker>
             <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
               Come ready
@@ -616,7 +631,7 @@ function ConferencePage() {
               "Contribute to dialogue supporting Universal Health Coverage and system strengthening",
               "Build partnerships that advance policy, practice, and care solutions",
             ].map((item, i) => (
-              <div key={item} className="flex gap-6 py-6 first:pt-0 last:pb-0">
+              <div key={item} className="flex gap-6 py-7 first:pt-0 last:pb-0">
                 <span className="display shrink-0 pt-0.5 text-[13px] font-semibold text-gold-dim">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -630,43 +645,54 @@ function ConferencePage() {
       </section>
 
       {/* Who Should Attend */}
-      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-20">
-        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
+      <section className="border-y border-primary/15 px-[5vw] py-24">
+        <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <Kicker>Who Should Attend</Kicker>
             <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
               This conference
               <br />
-              is for you
+              is for <span className="text-gold-dim">you</span>
             </h2>
-            <p className="mt-5 max-w-[32ch] text-[15.5px] leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-[38ch] text-[16px] leading-relaxed text-muted-foreground">
               Designed for delegates across policy, practice, innovation, and community systems.
             </p>
-            <div className="mt-8 border-l-[3px] border-gold pl-5">
+            <div className="mt-8 flex items-start gap-4">
+              <span className="mt-1 h-12 w-[3px] shrink-0 bg-gold" />
               <p className="text-[15.5px] leading-snug font-medium text-primary">
                 If you are part of the future of health, care, or community systems in Nigeria, this
                 room is for you.
               </p>
             </div>
+            <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+              {[
+                "Government officials and regulators",
+                "Hospital and healthcare leaders",
+                "Nurses, doctors, and allied health professionals",
+                "Homecare providers and caregivers",
+                "Health technology founders and product teams",
+                "Development partners and donor organizations",
+                "Investors and strategic funders",
+                "Academics and researchers",
+                "Insurers, HMOs, and healthcare financing institutions",
+                "Civil society, community leaders, and advocacy groups",
+                "Students and emerging professionals",
+              ].map((item) => (
+                <div key={item} className="flex items-baseline gap-2.5">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                  <p className="text-[14.5px] font-medium text-primary/80">{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="columns-1 gap-5 space-y-4 sm:columns-2">
-            {[
-              "Government officials and regulators",
-              "Hospital and healthcare leaders",
-              "Nurses, doctors, and allied health professionals",
-              "Homecare providers and caregivers",
-              "Health technology founders and product teams",
-              "Development partners and donor organizations",
-              "Investors and strategic funders",
-              "Academics and researchers",
-              "Insurers, HMOs, and healthcare financing institutions",
-              "Civil society, community leaders, and advocacy groups",
-              "Students and emerging professionals",
-            ].map((item) => (
-              <div key={item} className="break-inside-avoid border-b border-primary/10 pb-4">
-                <p className="text-[15.5px] font-medium text-primary/85">{item}</p>
-              </div>
-            ))}
+          <div className="relative hidden lg:block">
+            <img
+              src="/Plenary photo.webp"
+              alt="Plenary session"
+              className="w-full object-cover"
+              style={{ aspectRatio: "3 / 4" }}
+            />
+            <div className="absolute -top-4 -left-4 h-full w-full border border-gold/20" />
           </div>
         </div>
       </section>
@@ -687,25 +713,28 @@ function ConferencePage() {
       </div>
 
       {/* Programme */}
-      <section id="programme" className="scroll-mt-20 px-[5vw] py-16">
-        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[0.8fr_1.9fr]">
+      <section id="programme" className="scroll-mt-20 px-[5vw] py-24">
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.6fr]">
           <div className="lg:sticky lg:top-24 lg:self-start">
             <Kicker>Programme</Kicker>
             <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-              Programme, 19 November 2026
+              Programme,
+              <br />
+              19 November 2026
             </h2>
-            <p className="mt-4 max-w-[42ch] text-[15.5px] leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-[36ch] text-[15.5px] leading-relaxed text-muted-foreground">
               One day, one room, one outcome: a Nigerian National Position on Care as
               Infrastructure, refined in session and transmitted to the National Assembly after the
               convening.
             </p>
-            <div className="mt-8 hidden lg:block">
+            <div className="mt-10 relative hidden lg:block">
               <img
                 src="/Plenary photo.webp"
                 alt="Plenary session"
-                className="w-full border border-primary/10 object-cover"
+                className="w-full object-cover"
                 style={{ aspectRatio: "1 / 1" }}
               />
+              <div className="absolute -bottom-4 -right-4 border border-gold/20" />
             </div>
           </div>
 
@@ -714,17 +743,17 @@ function ConferencePage() {
               {PROGRAMME.map((slot) => (
                 <li
                   key={slot.time}
-                  className="group grid grid-cols-[64px_1fr] gap-4 border-b border-primary/15 py-8 transition-colors hover:bg-primary/[0.025] sm:grid-cols-[104px_1fr] sm:gap-8"
+                  className="group grid grid-cols-[56px_1fr] gap-4 border-b border-primary/15 py-7 transition-colors hover:bg-primary/[0.02] sm:grid-cols-[96px_1fr] sm:gap-8"
                 >
-                  <div className="display pt-1 text-[15px] font-bold tracking-[-0.01em] text-gold-dim">
+                  <div className="display pt-0.5 text-[14px] font-bold tracking-[-0.01em] text-gold-dim">
                     {slot.time}
                   </div>
                   <div>
-                    <h3 className="text-[19px] leading-snug font-semibold text-primary">
+                    <h3 className="text-[18px] leading-snug font-semibold text-primary">
                       {slot.title}
                     </h3>
                     {slot.body && (
-                      <p className="mt-2 max-w-[64ch] text-[15px] leading-relaxed text-muted-foreground">
+                      <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-muted-foreground">
                         {slot.body}
                       </p>
                     )}
@@ -733,7 +762,7 @@ function ConferencePage() {
                         className={`display mt-3 inline-block border px-2.5 py-1 text-[10.5px] font-semibold tracking-[0.12em] uppercase ${
                           slot.closed
                             ? "border-primary/25 bg-primary/[0.05] text-primary/80"
-                            : "border-gold-dim/45 bg-gold/[0.15] text-primary"
+                            : "border-gold-dim/45 bg-gold/[0.12] text-primary"
                         }`}
                       >
                         {slot.tag}
@@ -743,7 +772,7 @@ function ConferencePage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-6 max-w-[70ch] text-[14px] leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-[64ch] text-[14px] leading-relaxed text-muted-foreground">
               Speakers and panellists are announced as they are confirmed. Follow The Purple Global
               Mission on LinkedIn for confirmations.
             </p>
@@ -766,31 +795,28 @@ function ConferencePage() {
             the conversation on care as infrastructure for Nigeria.
           </p>
         </div>
-        <div className="grid gap-px overflow-hidden border border-gold/15 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {SPEAKERS.map((s) => (
             <article
               key={s.name}
-              className="group flex flex-col bg-primary transition-colors hover:bg-panel"
+              className="group flex gap-5 border border-gold/10 bg-primary-foreground/[0.03] p-5 transition-colors hover:border-gold/25 hover:bg-primary-foreground/[0.06]"
             >
-              <div className="relative flex aspect-[3/2] w-full items-center justify-center bg-primary-foreground/[0.04]">
-                <span className="text-[28px] font-bold text-primary-foreground/15">
+              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center bg-primary-foreground/[0.06]">
+                <span className="text-[20px] font-bold text-primary-foreground/20">
                   {s.name
                     .split(" ")
                     .map((w) => w[0])
                     .join("")
                     .slice(0, 2)}
                 </span>
-                <span className="display absolute bottom-2 left-2 px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-primary-foreground/30 uppercase">
-                  Photo
-                </span>
               </div>
-              <div className="flex flex-1 flex-col p-5">
-                <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold uppercase">
+              <div className="flex flex-1 flex-col">
+                <span className="display mb-0.5 text-[10.5px] font-semibold tracking-[0.14em] text-gold uppercase">
                   {s.role}
                 </span>
                 <h3 className="text-[16px] leading-snug font-semibold">{s.name}</h3>
-                <p className="mt-1 text-[13px] text-primary-foreground/60">{s.org}</p>
-                <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-primary-foreground/55">
+                <p className="mt-0.5 text-[13px] text-primary-foreground/55">{s.org}</p>
+                <p className="mt-auto pt-2 text-[13.5px] leading-relaxed text-primary-foreground/50">
                   {s.topic}
                 </p>
               </div>
@@ -811,46 +837,59 @@ function ConferencePage() {
             the framework for the National Position.
           </p>
         </div>
-        <div className="grid gap-px overflow-hidden border border-gold/15 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article className="row-span-2 border border-gold/15 bg-primary-foreground/[0.04] p-8 transition-colors hover:border-gold/25">
+            <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+              Layer 01
+            </span>
+            <h3 className="mt-4 text-[22px] font-semibold leading-snug">Policy and Governance</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-primary-foreground/70">
+              How regulation, standards, and leadership can strengthen safe, accountable, and
+              scalable care systems. The foundational layer that enables every other investment to
+              work.
+            </p>
+          </article>
           {[
             {
-              title: "Policy and Governance",
-              body: "How regulation, standards, and leadership can strengthen safe, accountable, and scalable care systems.",
-            },
-            {
+              num: "02",
               title: "Infrastructure and Systems Design",
               body: "How hospitals, homecare, community services, and referral pathways can work together more effectively.",
             },
             {
+              num: "03",
               title: "Digital Health and Technology",
               body: "How digital tools, AI, remote monitoring, and care coordination platforms can improve quality and continuity.",
             },
             {
+              num: "04",
               title: "Workforce and Care Economy",
               body: "How Nigeria can build, support, and retain a strong care workforce for long-term system resilience.",
             },
             {
+              num: "05",
               title: "Community and Cultural Competence",
               body: "How trust, family structures, local realities, and cultural sensitivity shape care delivery and outcomes.",
             },
             {
+              num: "06",
               title: "Non-Communicable Disease Management",
               body: "How care systems can respond to the rising burden of chronic illness across Nigeria and Africa.",
             },
             {
+              num: "07",
               title: "Maternal and Child Health",
               body: "How integrated care models can better support mothers, infants, children, and families across care journeys.",
             },
-          ].map((topic, i) => (
+          ].map((topic) => (
             <article
               key={topic.title}
-              className="relative bg-primary p-8 transition-colors hover:bg-panel"
+              className="border border-gold/10 bg-primary-foreground/[0.03] p-6 transition-colors hover:border-gold/20"
             >
-              <span className="display text-[48px] font-bold leading-none text-gold/10">
-                {String(i + 1).padStart(2, "0")}
+              <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold/60 uppercase">
+                Layer {topic.num}
               </span>
-              <h3 className="mt-2 text-[18px] font-semibold leading-snug">{topic.title}</h3>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-primary-foreground/70">
+              <h3 className="mt-2 text-[17px] font-semibold leading-snug">{topic.title}</h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-primary-foreground/65">
                 {topic.body}
               </p>
             </article>
@@ -928,50 +967,51 @@ function ConferencePage() {
       {/* Side rooms */}
       <section
         id="siderooms"
-        className="scroll-mt-20 border-y border-primary/15 bg-primary px-[5vw] py-16 text-primary-foreground"
+        className="scroll-mt-20 bg-primary px-[5vw] py-24 text-primary-foreground"
       >
-        <div className="grid gap-x-12 gap-y-8 border-b border-gold/25 pb-10 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <Kicker onDark>Four parallel sessions</Kicker>
-            <h2 className="text-[clamp(28px,3.6vw,44px)] leading-[1.03] font-bold tracking-[-0.01em]">
-              The Side Rooms
-            </h2>
-          </div>
-          <p className="max-w-[58ch] self-end text-[15.5px] leading-relaxed text-primary-foreground/82">
+        <div className="mb-16 max-w-2xl">
+          <Kicker onDark>Four parallel sessions</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,44px)] leading-[1.03] font-bold tracking-[-0.01em]">
+            The Side Rooms
+          </h2>
+          <p className="mt-4 max-w-[56ch] text-[15.5px] leading-relaxed text-primary-foreground/72">
             At 14:15 the convening breaks into four parallel policy sessions, one for each remaining
-            layer of the framework. Every delegate attends one. Tell us your first and second choice
-            below and your seat is assigned and confirmed by email before the day.
+            layer of the framework. Every delegate attends one.
           </p>
         </div>
-
-        <div className="grid gap-px bg-gold/20 md:grid-cols-2">
+        <div className="space-y-6">
           {ROOMS.map((room, i) => (
-            <article key={room.letter} className="flex flex-col gap-5 bg-primary p-7 sm:flex-row">
-              <div className="w-full sm:w-[38%] sm:shrink-0">
+            <article
+              key={room.letter}
+              className={`grid gap-0 overflow-hidden border border-gold/15 sm:grid-cols-[1fr_1.3fr] ${
+                i % 2 === 1 ? "sm:[direction:rtl]" : ""
+              }`}
+            >
+              <div className="relative bg-primary-foreground/[0.04] sm:[direction:ltr]">
                 <img
                   src={`/room-${room.letter.slice(-1).toLowerCase()}.svg`}
                   alt={room.title}
-                  className="w-full rounded-sm border border-gold/20 object-cover"
-                  style={{ aspectRatio: "4 / 3" }}
+                  className="h-full w-full object-cover"
+                  style={{ aspectRatio: "16 / 10" }}
                 />
               </div>
-              <div className="flex flex-1 flex-col">
-                <div className="display mb-3 flex items-center gap-2.5 text-[11px] font-bold tracking-[0.18em] text-gold uppercase">
+              <div className="flex flex-col justify-center p-7 sm:p-9 sm:[direction:ltr]">
+                <div className="display mb-3 flex items-center gap-3 text-[11px] font-bold tracking-[0.18em] text-gold uppercase">
                   <span>{room.letter}</span>
-                  <span className="h-px flex-1 bg-gold/35" />
+                  <span className="h-px flex-1 bg-gold/25" />
                 </div>
-                <h3 className="text-[21px] leading-[1.15] font-semibold tracking-[-0.01em]">
+                <h3 className="text-[22px] leading-[1.15] font-semibold tracking-[-0.01em]">
                   {room.title}
                 </h3>
-                <div className="mt-2 text-[13px] font-medium text-gold">{room.layer}</div>
-                <p className="mt-3.5 flex-1 text-[14.5px] leading-relaxed text-primary-foreground/82">
+                <div className="mt-2 text-[13px] font-medium text-gold/80">{room.layer}</div>
+                <p className="mt-4 text-[15px] leading-relaxed text-primary-foreground/72">
                   {room.body}
                 </p>
               </div>
             </article>
           ))}
         </div>
-        <p className="mt-8 max-w-[86ch] text-[14px] leading-relaxed text-primary-foreground/72">
+        <p className="mt-10 max-w-[72ch] text-[14px] leading-relaxed text-primary-foreground/60">
           Side rooms run once, in parallel. Selections are honoured first come first served against
           room capacity, which is why early registration matters. Second choices apply only when a
           first choice room is full.
