@@ -561,38 +561,43 @@ function ConferencePage() {
       </section>
 
       {/* Why this Conference Matters */}
-      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
-        <div className="mx-auto max-w-3xl">
-          <Kicker>Why this Conference Matters</Kicker>
-          <div className="space-y-5 text-[16px] leading-relaxed text-muted-foreground">
-            <p>
+      <section className="relative overflow-hidden border-y border-gold/20 bg-primary px-[5vw] py-24 text-primary-foreground">
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
+          <div className="absolute -top-32 right-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(184,150,15,0.12),transparent_70%)] blur-3xl" />
+        </div>
+        <div className="mx-auto max-w-4xl">
+          <Kicker onDark>Why this Conference Matters</Kicker>
+          <blockquote className="mt-8 border-l-[3px] border-gold pl-6 sm:pl-8">
+            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.3] font-medium tracking-[-0.01em] text-primary-foreground/90">
               Care in Nigeria is entering a new phase. Families require stronger support systems,
               healthcare services increasingly depend on continuity beyond hospital visits, and
               digital technology is expanding new possibilities for monitoring, coordination, and
               patient-centered care.
             </p>
-            <p>
-              As countries advance toward Universal Health Coverage (UHC) — a key priority in global
-              health discussions — there is growing recognition that effective health systems must
+          </blockquote>
+          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+            <p className="text-[15.5px] leading-relaxed text-primary-foreground/72">
+              As countries advance toward Universal Health Coverage (UHC), a key priority in global
+              health discussions, there is growing recognition that effective health systems must
               integrate hospitals, home-based care, digital tools, and community support.
             </p>
-            <p>
+            <p className="text-[15.5px] leading-relaxed text-primary-foreground/72">
               Across Africa, rising non-communicable diseases and changing health needs are
               accelerating conversations on how to deliver coordinated, high-quality care throughout
               a patient&apos;s journey.
             </p>
-            <p>
-              Care Conference 2026 brings these global perspectives and African priorities together,
-              convening policymakers, clinicians, innovators, investors, and community leaders to
-              explore how Nigeria can strengthen care systems, support its healthcare workforce, and
-              contribute to the long-term goal of Universal Health Coverage for all.
-            </p>
           </div>
+          <p className="mt-8 max-w-[60ch] text-[15.5px] leading-relaxed text-primary-foreground/72">
+            Care Conference 2026 brings these global perspectives and African priorities together,
+            convening policymakers, clinicians, innovators, investors, and community leaders to
+            explore how Nigeria can strengthen care systems, support its healthcare workforce, and
+            contribute to the long-term goal of Universal Health Coverage for all.
+          </p>
         </div>
       </section>
 
       {/* What Delegates Will Gain */}
-      <section className="px-[5vw] py-20">
+      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-24">
         <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Kicker>What Delegates Will Gain</Kicker>
@@ -666,6 +671,21 @@ function ConferencePage() {
         </div>
       </section>
 
+      {/* Full-bleed image break */}
+      <div className="relative h-[40vh] min-h-[280px] overflow-hidden">
+        <img
+          src="/Conference Image.webp"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/60" />
+        <div className="absolute inset-0 flex items-center justify-center px-[5vw]">
+          <p className="display max-w-[40ch] text-center text-[clamp(24px,4vw,48px)] leading-[1.1] font-bold tracking-[-0.02em] text-primary-foreground">
+            One day. One room. One <span className="text-gold">National Position</span>.
+          </p>
+        </div>
+      </div>
+
       {/* Programme */}
       <section id="programme" className="scroll-mt-20 px-[5vw] py-16">
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[0.8fr_1.9fr]">
@@ -732,42 +752,45 @@ function ConferencePage() {
       </section>
 
       {/* Speakers & Panelists */}
-      <section id="speakers" className="scroll-mt-20 border-b border-primary/15 px-[5vw] py-16">
-        <div className="mb-12 max-w-2xl">
-          <Kicker>Speakers & Panelists</Kicker>
-          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+      <section
+        id="speakers"
+        className="scroll-mt-20 bg-primary px-[5vw] py-24 text-primary-foreground"
+      >
+        <div className="mb-14 max-w-2xl">
+          <Kicker onDark>Speakers & Panelists</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
             Who&apos;s on stage
           </h2>
-          <p className="mt-4 max-w-[52ch] text-[15.5px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 max-w-[52ch] text-[15.5px] leading-relaxed text-primary-foreground/70">
             Policymakers, clinicians, researchers, innovators, and lived experience voices shaping
             the conversation on care as infrastructure for Nigeria.
           </p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-px overflow-hidden border border-gold/15 sm:grid-cols-2 lg:grid-cols-4">
           {SPEAKERS.map((s) => (
             <article
               key={s.name}
-              className="group flex flex-col border border-primary/10 bg-card transition-shadow hover:shadow-md"
+              className="group flex flex-col bg-primary transition-colors hover:bg-panel"
             >
-              <div className="relative flex aspect-[4/3] w-full items-center justify-center bg-primary/[0.04]">
-                <span className="text-[28px] font-bold text-primary/20">
+              <div className="relative flex aspect-[3/2] w-full items-center justify-center bg-primary-foreground/[0.04]">
+                <span className="text-[28px] font-bold text-primary-foreground/15">
                   {s.name
                     .split(" ")
                     .map((w) => w[0])
                     .join("")
                     .slice(0, 2)}
                 </span>
-                <span className="display absolute bottom-2 left-2 bg-background px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-primary/50 uppercase">
+                <span className="display absolute bottom-2 left-2 px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-primary-foreground/30 uppercase">
                   Photo
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold-dim uppercase">
+                <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold uppercase">
                   {s.role}
                 </span>
-                <h3 className="text-[16px] leading-snug font-semibold text-primary">{s.name}</h3>
-                <p className="mt-1 text-[13px] text-muted-foreground">{s.org}</p>
-                <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-muted-foreground/80">
+                <h3 className="text-[16px] leading-snug font-semibold">{s.name}</h3>
+                <p className="mt-1 text-[13px] text-primary-foreground/60">{s.org}</p>
+                <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-primary-foreground/55">
                   {s.topic}
                 </p>
               </div>
@@ -777,14 +800,18 @@ function ConferencePage() {
       </section>
 
       {/* What the Conference Will Cover */}
-      <section className="px-[5vw] py-20">
+      <section className="bg-primary px-[5vw] py-24 text-primary-foreground">
         <div className="mb-16 max-w-2xl">
-          <Kicker>What the Conference Will Cover</Kicker>
-          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+          <Kicker onDark>What the Conference Will Cover</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
             Seven policy layers
           </h2>
+          <p className="mt-4 max-w-[48ch] text-[15.5px] leading-relaxed text-primary-foreground/70">
+            Each layer addresses a distinct dimension of care system building. Together they form
+            the framework for the National Position.
+          </p>
         </div>
-        <div className="grid gap-px bg-primary/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden border border-gold/15 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               title: "Policy and Governance",
@@ -817,15 +844,13 @@ function ConferencePage() {
           ].map((topic, i) => (
             <article
               key={topic.title}
-              className="group bg-background p-8 transition-colors hover:bg-primary/[0.02]"
+              className="relative bg-primary p-8 transition-colors hover:bg-panel"
             >
-              <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold-dim uppercase">
-                Layer {String(i + 1).padStart(2, "0")}
+              <span className="display text-[48px] font-bold leading-none text-gold/10">
+                {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-3 text-[18px] font-semibold leading-snug text-primary">
-                {topic.title}
-              </h3>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+              <h3 className="mt-2 text-[18px] font-semibold leading-snug">{topic.title}</h3>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-primary-foreground/70">
                 {topic.body}
               </p>
             </article>
@@ -834,58 +859,71 @@ function ConferencePage() {
       </section>
 
       {/* What to Expect as a Delegate */}
-      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-20">
-        <div className="mb-16 max-w-2xl">
-          <Kicker>What to Expect as a Delegate</Kicker>
-          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-            Your conference experience
-          </h2>
-        </div>
-        <div className="grid gap-px bg-primary/10 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              num: "01",
-              title: "Main Plenary Sessions",
-              body: "High-level conversations, keynote addresses, and national framing on the future of care in Nigeria.",
-            },
-            {
-              num: "02",
-              title: "Focus Studios",
-              body: "Smaller thematic sessions dedicated to policy, digital health, workforce, innovation, and community-centered care.",
-            },
-            {
-              num: "03",
-              title: "Innovation Exhibition",
-              body: "A curated showcase of healthcare tools, technologies, services, and ideas shaping the future of care delivery.",
-            },
-            {
-              num: "04",
-              title: "Partner & Networking Spaces",
-              body: "Spaces for collaboration, introductions, sponsor engagement, and strategic meetings.",
-            },
-            {
-              num: "05",
-              title: "Conference Resources",
-              body: "Access to downloadable materials, updates, announcements, and future communication before and after the event.",
-            },
-          ].map((item) => (
-            <article
-              key={item.title}
-              className="group bg-background p-8 transition-colors hover:bg-primary/[0.02]"
-            >
-              <span className="display text-[36px] font-bold leading-none text-primary/[0.07]">
-                {item.num}
-              </span>
-              <h3 className="mt-4 text-[18px] font-semibold leading-snug text-primary">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
-                {item.body}
-              </p>
-            </article>
-          ))}
+      <section className="border-y border-gold/20 bg-[#1a0f40] px-[5vw] py-24 text-primary-foreground">
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
+          <div>
+            <Kicker onDark>What to Expect</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
+              Your conference
+              <br />
+              experience
+            </h2>
+          </div>
+          <div className="space-y-0 divide-y divide-primary-foreground/10">
+            {[
+              {
+                num: "01",
+                title: "Main Plenary Sessions",
+                body: "High-level conversations, keynote addresses, and national framing on the future of care in Nigeria.",
+              },
+              {
+                num: "02",
+                title: "Focus Studios",
+                body: "Smaller thematic sessions dedicated to policy, digital health, workforce, innovation, and community-centered care.",
+              },
+              {
+                num: "03",
+                title: "Innovation Exhibition",
+                body: "A curated showcase of healthcare tools, technologies, services, and ideas shaping the future of care delivery.",
+              },
+              {
+                num: "04",
+                title: "Partner & Networking Spaces",
+                body: "Spaces for collaboration, introductions, sponsor engagement, and strategic meetings.",
+              },
+              {
+                num: "05",
+                title: "Conference Resources",
+                body: "Access to downloadable materials, updates, announcements, and future communication before and after the event.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-6 py-7 first:pt-0 last:pb-0">
+                <span className="display shrink-0 pt-1 text-[13px] font-semibold text-gold">
+                  {item.num}
+                </span>
+                <div>
+                  <h3 className="text-[18px] font-semibold leading-snug">{item.title}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-primary-foreground/70">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Quote break */}
+      <div className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
+        <blockquote className="mx-auto max-w-3xl text-center">
+          <p className="display text-[clamp(20px,2.8vw,30px)] leading-[1.4] font-medium tracking-[-0.01em] text-primary italic">
+            &ldquo;You cannot finance care you cannot count.&rdquo;
+          </p>
+          <cite className="mt-4 block text-[13px] font-semibold not-italic text-gold-dim">
+            The Care Conference 2026
+          </cite>
+        </blockquote>
+      </div>
 
       {/* Side rooms */}
       <section
