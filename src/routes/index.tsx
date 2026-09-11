@@ -563,19 +563,18 @@ function ConferencePage() {
       </section>
 
       {/* Why this Conference Matters */}
-      <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24">
+      <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/Why this conference matters.webp)",
             backgroundAttachment: "fixed",
           }}
         />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/85" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/50 via-transparent to-primary/90"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#1a0f40]/80 via-[#2D1B69]/70 to-[#1a0f40]/90"
         />
         <div
           aria-hidden="true"
