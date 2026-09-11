@@ -592,50 +592,59 @@ function ConferencePage() {
       </section>
 
       {/* What Delegates Will Gain */}
-      <section className="px-[5vw] py-16">
-        <div className="mb-12 max-w-2xl">
-          <Kicker>What Delegates Will Gain</Kicker>
-          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-            Come ready to engage
-          </h2>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            "Engage in conversations shaping the future of care systems in Nigeria and Africa",
-            "Learn global best practices in integrated, home, and community-based care",
-            "Connect with policymakers, healthcare leaders, innovators, and investors",
-            "Discover innovations in digital health, workforce development, and care delivery",
-            "Contribute to dialogue supporting Universal Health Coverage and system strengthening",
-            "Build partnerships that advance policy, practice, and care solutions",
-          ].map((item) => (
-            <div
-              key={item}
-              className="flex gap-4 border-l-[3px] border-gold bg-primary/[0.025] p-5"
-            >
-              <p className="text-[15.5px] leading-relaxed text-muted-foreground">{item}</p>
-            </div>
-          ))}
+      <section className="px-[5vw] py-20">
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <Kicker>What Delegates Will Gain</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              Come ready
+              <br />
+              to engage
+            </h2>
+          </div>
+          <div className="space-y-0 divide-y divide-primary/10">
+            {[
+              "Engage in conversations shaping the future of care systems in Nigeria and Africa",
+              "Learn global best practices in integrated, home, and community-based care",
+              "Connect with policymakers, healthcare leaders, innovators, and investors",
+              "Discover innovations in digital health, workforce development, and care delivery",
+              "Contribute to dialogue supporting Universal Health Coverage and system strengthening",
+              "Build partnerships that advance policy, practice, and care solutions",
+            ].map((item, i) => (
+              <div key={item} className="flex gap-6 py-6 first:pt-0 last:pb-0">
+                <span className="display shrink-0 pt-0.5 text-[13px] font-semibold text-gold-dim">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-[17px] leading-relaxed text-muted-foreground lg:text-[18px]">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Who Should Attend */}
-      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
-        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[1fr_1.4fr]">
+      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-20">
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
           <div>
             <Kicker>Who Should Attend</Kicker>
             <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-              This conference is for you
+              This conference
+              <br />
+              is for you
             </h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
-              This conference is designed for delegates across policy, practice, innovation, and
-              community systems.
+            <p className="mt-5 max-w-[32ch] text-[15.5px] leading-relaxed text-muted-foreground">
+              Designed for delegates across policy, practice, innovation, and community systems.
             </p>
-            <p className="mt-6 border-l-2 border-gold pl-4 text-[15.5px] leading-snug font-medium text-primary">
-              If you are part of the future of health, care, or community systems in Nigeria, this
-              room is for you.
-            </p>
+            <div className="mt-8 border-l-[3px] border-gold pl-5">
+              <p className="text-[15.5px] leading-snug font-medium text-primary">
+                If you are part of the future of health, care, or community systems in Nigeria, this
+                room is for you.
+              </p>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="columns-1 gap-5 space-y-4 sm:columns-2">
             {[
               "Government officials and regulators",
               "Hospital and healthcare leaders",
@@ -649,12 +658,9 @@ function ConferencePage() {
               "Civil society, community leaders, and advocacy groups",
               "Students and emerging professionals",
             ].map((item) => (
-              <span
-                key={item}
-                className="border border-primary/15 bg-background px-4 py-2 text-[13.5px] font-medium text-primary/80 transition-colors hover:border-gold hover:text-primary"
-              >
-                {item}
-              </span>
+              <div key={item} className="break-inside-avoid border-b border-primary/10 pb-4">
+                <p className="text-[15.5px] font-medium text-primary/85">{item}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -771,14 +777,14 @@ function ConferencePage() {
       </section>
 
       {/* What the Conference Will Cover */}
-      <section className="px-[5vw] py-16">
-        <div className="mb-12 max-w-2xl">
+      <section className="px-[5vw] py-20">
+        <div className="mb-16 max-w-2xl">
           <Kicker>What the Conference Will Cover</Kicker>
           <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
             Seven policy layers
           </h2>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px bg-primary/10 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               title: "Policy and Governance",
@@ -811,16 +817,15 @@ function ConferencePage() {
           ].map((topic, i) => (
             <article
               key={topic.title}
-              className="group relative border border-primary/10 bg-card p-6 transition-shadow hover:shadow-md"
+              className="group bg-background p-8 transition-colors hover:bg-primary/[0.02]"
             >
-              <span className="display absolute top-4 right-4 text-[32px] font-bold text-primary/[0.06]">
-                {String(i + 1).padStart(2, "0")}
+              <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold-dim uppercase">
+                Layer {String(i + 1).padStart(2, "0")}
               </span>
-              <div className="mb-3 h-8 w-8 rounded-full bg-gold/15 text-[13px] font-bold text-gold-dim flex items-center justify-center">
-                {i + 1}
-              </div>
-              <h3 className="text-[17px] font-semibold text-primary">{topic.title}</h3>
-              <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">
+              <h3 className="mt-3 text-[18px] font-semibold leading-snug text-primary">
+                {topic.title}
+              </h3>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
                 {topic.body}
               </p>
             </article>
@@ -829,14 +834,14 @@ function ConferencePage() {
       </section>
 
       {/* What to Expect as a Delegate */}
-      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
-        <div className="mb-12 max-w-2xl">
+      <section className="border-y border-primary/15 bg-primary/[0.02] px-[5vw] py-20">
+        <div className="mb-16 max-w-2xl">
           <Kicker>What to Expect as a Delegate</Kicker>
           <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
             Your conference experience
           </h2>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-px bg-primary/10 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               num: "01",
@@ -866,17 +871,17 @@ function ConferencePage() {
           ].map((item) => (
             <article
               key={item.title}
-              className="flex gap-5 border-l-[3px] border-gold bg-card p-6 transition-shadow hover:shadow-md"
+              className="group bg-background p-8 transition-colors hover:bg-primary/[0.02]"
             >
-              <span className="display shrink-0 text-[28px] font-bold text-gold/30">
+              <span className="display text-[36px] font-bold leading-none text-primary/[0.07]">
                 {item.num}
               </span>
-              <div>
-                <h3 className="text-[17px] font-semibold text-primary">{item.title}</h3>
-                <p className="mt-1.5 text-[14.5px] leading-relaxed text-muted-foreground">
-                  {item.body}
-                </p>
-              </div>
+              <h3 className="mt-4 text-[18px] font-semibold leading-snug text-primary">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+                {item.body}
+              </p>
             </article>
           ))}
         </div>
