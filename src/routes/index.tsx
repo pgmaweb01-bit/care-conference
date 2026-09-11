@@ -591,6 +591,75 @@ function ConferencePage() {
         </div>
       </section>
 
+      {/* What Delegates Will Gain */}
+      <section className="px-[5vw] py-16">
+        <div className="mx-auto max-w-3xl">
+          <Kicker>What Delegates Will Gain</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+            Come ready to engage
+          </h2>
+          <ul className="mt-8 space-y-4">
+            {[
+              "Engage in conversations shaping the future of care systems in Nigeria and Africa",
+              "Learn global best practices in integrated, home, and community-based care",
+              "Connect with policymakers, healthcare leaders, innovators, and investors",
+              "Discover innovations in digital health, workforce development, and care delivery",
+              "Contribute to dialogue supporting Universal Health Coverage and system strengthening",
+              "Build partnerships that advance policy, practice, and care solutions",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 text-[16px] leading-relaxed text-muted-foreground"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Who Should Attend */}
+      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
+        <div className="mx-auto max-w-3xl">
+          <Kicker>Who Should Attend</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+            This conference is for you
+          </h2>
+          <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
+            This conference is designed for delegates across policy, practice, innovation, and
+            community systems, including:
+          </p>
+          <ul className="mt-6 space-y-3">
+            {[
+              "Government officials and regulators",
+              "Hospital and healthcare leaders",
+              "Nurses, doctors, and allied health professionals",
+              "Homecare providers and caregivers",
+              "Health technology founders and product teams",
+              "Development partners and donor organizations",
+              "Investors and strategic funders",
+              "Academics and researchers",
+              "Insurers, HMOs, and healthcare financing institutions",
+              "Civil society, community leaders, and advocacy groups",
+              "Students and emerging professionals interested in the future of care",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 text-[15.5px] leading-relaxed text-muted-foreground"
+              >
+                <span className="mt-1.5 text-gold">&#9654;</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 border-l-2 border-gold pl-4 text-[15.5px] leading-snug font-medium text-primary">
+            If you are part of the future of health, care, or community systems in Nigeria, this
+            room is for you.
+          </p>
+        </div>
+      </section>
+
       {/* Programme */}
       <section id="programme" className="scroll-mt-20 px-[5vw] py-16">
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[0.8fr_1.9fr]">
@@ -696,6 +765,102 @@ function ConferencePage() {
                   {s.topic}
                 </p>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* What the Conference Will Cover */}
+      <section className="px-[5vw] py-16">
+        <div className="mb-12 max-w-2xl">
+          <Kicker>What the Conference Will Cover</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+            Seven policy layers
+          </h2>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "Policy and Governance",
+              body: "How regulation, standards, and leadership can strengthen safe, accountable, and scalable care systems.",
+            },
+            {
+              title: "Infrastructure and Systems Design",
+              body: "How hospitals, homecare, community services, and referral pathways can work together more effectively.",
+            },
+            {
+              title: "Digital Health and Technology",
+              body: "How digital tools, AI, remote monitoring, and care coordination platforms can improve quality and continuity.",
+            },
+            {
+              title: "Workforce and Care Economy",
+              body: "How Nigeria can build, support, and retain a strong care workforce for long-term system resilience.",
+            },
+            {
+              title: "Community and Cultural Competence",
+              body: "How trust, family structures, local realities, and cultural sensitivity shape care delivery and outcomes.",
+            },
+            {
+              title: "Non-Communicable Disease Management",
+              body: "How care systems can respond to the rising burden of chronic illness across Nigeria and Africa.",
+            },
+            {
+              title: "Maternal and Child Health",
+              body: "How integrated care models can better support mothers, infants, children, and families across care journeys.",
+            },
+          ].map((topic) => (
+            <article
+              key={topic.title}
+              className="border border-primary/10 bg-card p-6 transition-shadow hover:shadow-md"
+            >
+              <h3 className="text-[17px] font-semibold text-primary">{topic.title}</h3>
+              <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">
+                {topic.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* What to Expect as a Delegate */}
+      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
+        <div className="mb-12 max-w-2xl">
+          <Kicker>What to Expect as a Delegate</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+            Your conference experience
+          </h2>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "Main Plenary Sessions",
+              body: "High-level conversations, keynote addresses, and national framing on the future of care in Nigeria.",
+            },
+            {
+              title: "Focus Studios",
+              body: "Smaller thematic sessions dedicated to policy, digital health, workforce, innovation, and community-centered care.",
+            },
+            {
+              title: "Innovation Exhibition",
+              body: "A curated showcase of healthcare tools, technologies, services, and ideas shaping the future of care delivery.",
+            },
+            {
+              title: "Partner & Networking Spaces",
+              body: "Spaces for collaboration, introductions, sponsor engagement, and strategic meetings.",
+            },
+            {
+              title: "Conference Resources",
+              body: "Access to downloadable materials, updates, announcements, and future communication before and after the event.",
+            },
+          ].map((item) => (
+            <article
+              key={item.title}
+              className="border border-primary/10 bg-card p-6 transition-shadow hover:shadow-md"
+            >
+              <h3 className="text-[17px] font-semibold text-primary">{item.title}</h3>
+              <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">
+                {item.body}
+              </p>
             </article>
           ))}
         </div>
