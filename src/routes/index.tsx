@@ -563,14 +563,11 @@ function ConferencePage() {
       </section>
 
       {/* Why this Conference Matters */}
-      <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(/Why this conference matters.webp)",
-            backgroundAttachment: "fixed",
-          }}
+      <section className="relative border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
+        <img
+          src="/Why this conference matters.webp"
+          alt=""
+          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
         />
         <div
           aria-hidden="true"
