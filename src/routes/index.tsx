@@ -560,6 +560,37 @@ function ConferencePage() {
         </div>
       </section>
 
+      {/* Why this Conference Matters */}
+      <section className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
+        <div className="mx-auto max-w-3xl">
+          <Kicker>Why this Conference Matters</Kicker>
+          <div className="space-y-5 text-[16px] leading-relaxed text-muted-foreground">
+            <p>
+              Care in Nigeria is entering a new phase. Families require stronger support systems,
+              healthcare services increasingly depend on continuity beyond hospital visits, and
+              digital technology is expanding new possibilities for monitoring, coordination, and
+              patient-centered care.
+            </p>
+            <p>
+              As countries advance toward Universal Health Coverage (UHC) — a key priority in global
+              health discussions — there is growing recognition that effective health systems must
+              integrate hospitals, home-based care, digital tools, and community support.
+            </p>
+            <p>
+              Across Africa, rising non-communicable diseases and changing health needs are
+              accelerating conversations on how to deliver coordinated, high-quality care throughout
+              a patient&apos;s journey.
+            </p>
+            <p>
+              Care Conference 2026 brings these global perspectives and African priorities together,
+              convening policymakers, clinicians, innovators, investors, and community leaders to
+              explore how Nigeria can strengthen care systems, support its healthcare workforce, and
+              contribute to the long-term goal of Universal Health Coverage for all.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Programme */}
       <section id="programme" className="scroll-mt-20 px-[5vw] py-16">
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[0.8fr_1.9fr]">
@@ -641,23 +672,30 @@ function ConferencePage() {
           {SPEAKERS.map((s) => (
             <article
               key={s.name}
-              className="group flex flex-col border border-primary/10 bg-card p-5 transition-shadow hover:shadow-md"
+              className="group flex flex-col border border-primary/10 bg-card transition-shadow hover:shadow-md"
             >
-              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/[0.06] text-[22px] font-bold text-primary/40">
-                {s.name
-                  .split(" ")
-                  .map((w) => w[0])
-                  .join("")
-                  .slice(0, 2)}
+              <div className="relative flex aspect-[4/3] w-full items-center justify-center bg-primary/[0.04]">
+                <span className="text-[28px] font-bold text-primary/20">
+                  {s.name
+                    .split(" ")
+                    .map((w) => w[0])
+                    .join("")
+                    .slice(0, 2)}
+                </span>
+                <span className="display absolute bottom-2 left-2 bg-background px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-primary/50 uppercase">
+                  Photo
+                </span>
               </div>
-              <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold-dim uppercase">
-                {s.role}
-              </span>
-              <h3 className="text-[16px] leading-snug font-semibold text-primary">{s.name}</h3>
-              <p className="mt-1 text-[13px] text-muted-foreground">{s.org}</p>
-              <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-muted-foreground/80">
-                {s.topic}
-              </p>
+              <div className="flex flex-1 flex-col p-5">
+                <span className="display mb-1 text-[10.5px] font-semibold tracking-[0.14em] text-gold-dim uppercase">
+                  {s.role}
+                </span>
+                <h3 className="text-[16px] leading-snug font-semibold text-primary">{s.name}</h3>
+                <p className="mt-1 text-[13px] text-muted-foreground">{s.org}</p>
+                <p className="mt-auto pt-3 text-[13.5px] leading-relaxed text-muted-foreground/80">
+                  {s.topic}
+                </p>
+              </div>
             </article>
           ))}
         </div>
