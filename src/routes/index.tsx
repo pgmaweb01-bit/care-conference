@@ -567,12 +567,9 @@ function ConferencePage() {
         <img
           src="/Why this conference matters.webp"
           alt=""
-          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#1a0f40]/80 via-[#2D1B69]/70 to-[#1a0f40]/90"
-        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/75" />
         <div
           aria-hidden="true"
           className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary-foreground/[0.03] select-none"
