@@ -47,48 +47,53 @@ const PROGRAMME = [
   {
     time: "08:00",
     title: "Registration and CareSouk opens",
-    body: "Delegate check-in and the fully digital exhibition open for the day.",
+    body: "Delegate check in. The CareSouk, our fully digital exhibition of care sector organisations, runs throughout the day.",
   },
   {
     time: "09:00",
     title: "Opening ceremony",
-    body: "Convener welcome, keynote, ministerial address and institutional messages.",
+    body: "Convener welcome, keynote address framing the National Position and the five policy layers, ministerial address, and goodwill messages from institutional partners.",
   },
   {
     time: "10:15",
     title: "Plenary 1: The First Caregivers",
-    body: "Lived experience of dementia, stroke recovery, disability and long-term care.",
+    body: "The Family Panel. Nigerians who carry care at home open the public programme with lived experience of dementia care, stroke recovery, disability care, and long term caregiving.",
+    tag: "Main stage, all delegates",
   },
   {
     time: "11:30",
     title: "Plenary 2: Safe at Home",
-    body: "Clinical governance and quality assurance for safe care at home.",
+    body: "Clinical governance and quality assurance. Regulators, hospital clinical leaders, home care clinical leads, and quality experts on what safe care at home requires.",
+    tag: "Main stage, all delegates",
   },
   {
     time: "12:45",
     title: "Book launch: The Homecare Framework",
-    body: "The official launch flows directly into lunch and networking.",
+    body: "The launch of The Homecare Framework: Care as Infrastructure for Everyday Life, flowing into lunch.",
   },
   {
     time: "13:15",
     title: "Lunch, CareSouk and networking",
-    body: "Structured connections across the delegate room and digital exhibition.",
+    body: "Structured networking across the delegate room and the digital exhibition.",
   },
   {
     time: "14:15",
-    title: "Four parallel policy sessions",
-    body: "Workforce, coordination, digital health data and financing.",
+    title: "Side rooms: four parallel policy sessions",
+    body: "Each delegate attends one of four side rooms covering workforce, coordination, digital health data, and financing. Seats are assigned before the day from your selection below.",
+    tag: "Choose one of four, advance selection",
   },
   {
     time: "15:45",
     title: "Closed institutional roundtable",
-    body: "Principals refine the National Position while delegates continue networking.",
+    body: "Twenty to thirty principals from government, regulation, financing, and practice contest and refine the National Position text. General delegates continue with the CareSouk, exhibitor spotlights, and networking.",
     tag: "Invitation only",
+    closed: true,
   },
   {
     time: "17:15",
     title: "Closing plenary",
-    body: "Roundtable readout, next steps and closing remarks from the convener.",
+    body: "Roundtable readout, next steps for the National Position, and closing remarks from the convener. The refined text follows as a post event communique.",
+    tag: "Main stage, all delegates",
   },
   { time: "17:45", title: "Close" },
 ];
@@ -97,40 +102,77 @@ const SPEAKERS = [
   {
     name: "Dr. Adeola Onakoya",
     role: "Keynote Speaker",
+    org: "National Health Authority",
     topic: "Care as Infrastructure: The National Vision",
   },
   {
     name: "Prof. Amina Mohammed",
     role: "Panel Chair",
+    org: "University of Lagos, Faculty of Medicine",
     topic: "The First Caregivers: Lived Experience",
   },
   {
     name: "Barr. Chukwuma Eze",
     role: "Panelist",
+    org: "Federal Ministry of Health",
     topic: "Regulatory Pathways for Home Care",
+  },
+  {
+    name: "Dr. Fatima Bello",
+    role: "Panelist",
+    org: "Nigeria Health Insurance Authority",
+    topic: "Financing Care: Pooled Models",
+  },
+  {
+    name: "Mr. Olusegun Adebayo",
+    role: "Panelist",
+    org: "CareNet Technologies",
+    topic: "Digital Health Infrastructure",
+  },
+  {
+    name: "Mrs. Ngozi Okafor",
+    role: "Panelist",
+    org: "Homecare Nigeria Foundation",
+    topic: "Workforce Development and Protection",
+  },
+  {
+    name: "Dr. Emeka Nwosu",
+    role: "Panelist",
+    org: "Lagos State Primary Health Care Board",
+    topic: "Coordination and Continuity of Care",
+  },
+  {
+    name: "Ms. Aisha Dikko",
+    role: "Moderator",
+    org: "The Purple Global Mission",
+    topic: "Closing Plenary and Next Steps",
   },
 ];
 
 const ROOMS = [
   {
-    letter: "A",
+    letter: "Room A",
     title: "Who Cares for Nigeria?",
-    body: "Care workforce development and protection.",
+    layer: "Care Workforce Development and Protection",
+    body: "Recognition, certification, training, and labour protection for the people who deliver care, with regulators, nursing academics, training institutions, and practising care workers in the room.",
   },
   {
-    letter: "B",
+    letter: "Room B",
     title: "The Journey Between",
-    body: "Care coordination and continuity of care.",
+    layer: "Care Coordination and Continuity of Care",
+    body: "The path from hospital discharge to home. Hospital leaders, insurers, rehabilitation specialists, and coordination leads on making continuity of care reimbursable and routine.",
   },
   {
-    letter: "C",
+    letter: "Room C",
     title: "You Cannot Finance What You Cannot Count",
-    body: "Digital health infrastructure and care data systems.",
+    layer: "Digital Health Infrastructure and Care Data Systems",
+    body: "Nigeria has no publicly accessible national home care dataset, and no consolidated public register of home care providers is in operation today. A register of who provides care is not a record of what care is delivered. This room convenes the data layer beneath every financing decision: national digital architecture, claims data, interoperability standards, and the technology builders creating care records infrastructure.",
   },
   {
-    letter: "D",
+    letter: "Room D",
     title: "Paying for the Load Bearing Layer",
-    body: "Care financing, policy and regulatory architecture.",
+    layer: "Care Financing, Policy and Regulatory Architecture",
+    body: "Benefit design, pooled financing, development finance, and the legislative pathway that moves home care from out of pocket spending into structured financing.",
   },
 ];
 
@@ -215,32 +257,47 @@ function ConferencePage() {
       "Second choice",
       "Sector",
     ];
-
     const missing = required.filter((k) => !answers[k]);
-    if (missing.length > 0) {
-      setStatus({ msg: `Please fill in: ${missing.join(", ")}`, ok: false });
+    if (missing.length) {
       setIsSubmitting(false);
+      setStatus({
+        msg: `Please complete all required fields before registering. Missing: ${missing.join(", ")}.`,
+        ok: false,
+      });
       return;
     }
 
-    const subject = encodeURIComponent("Care Conference 2026 Registration");
-    const body = Object.entries(answers)
-      .filter(([, v]) => v)
-      .map(([k, v]) => `${k}: ${v}`)
-      .join("%0A");
-    window.location.href = `mailto:${CONF_EMAIL}?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
-      setStatus({
-        msg: "Your email client should open now. If not, please copy the address and send manually.",
-        ok: true,
-      });
+    if (answers["First choice"] === answers["Second choice"]) {
       setIsSubmitting(false);
-    }, 1500);
+      setStatus({
+        msg: "Your first and second choice side rooms must be different.",
+        ok: false,
+      });
+      return;
+    }
+
+    const lines = Object.entries(answers)
+      .filter(([, v]) => v)
+      .map(([k, v]) => `${k}: ${v}`);
+    const body =
+      "Registration - The Care Conference 2026%0D%0A%0D%0A" +
+      encodeURIComponent(lines.join("\n")).replace(/%0A/g, "%0D%0A");
+    window.location.href =
+      `mailto:${CONF_EMAIL}?subject=` +
+      encodeURIComponent(`Registration: ${answers["Full Name"]} (${formType})`) +
+      `&body=${body}`;
+
+    form.reset();
+    setIsSubmitting(false);
+    setFormType("attendee");
+    setStatus({
+      msg: "Your email app has opened with your registration details. Press send to complete your registration. A confirmation will be sent to you before the event.",
+      ok: true,
+    });
   }
 
   return (
-    <div className="min-h-screen bg-background font-body text-primary">
+    <div className="mx-auto max-w-[1440px]">
       {/* Masthead */}
       <header className="sticky top-0 z-30 border-b border-primary/15 bg-background/92 backdrop-blur-md">
         <div className="flex items-center justify-between px-[5vw] py-4">
@@ -255,6 +312,12 @@ function ConferencePage() {
             aria-label="Page navigation"
             className="hidden items-center gap-x-7 text-[13px] font-medium md:flex"
           >
+            <a
+              href="#about"
+              className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
+            >
+              About
+            </a>
             <a
               href="#programme"
               className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
@@ -272,12 +335,6 @@ function ConferencePage() {
               className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
             >
               Side Rooms
-            </a>
-            <a
-              href="#venue"
-              className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
-            >
-              Venue
             </a>
             <a
               href="#register"
@@ -301,37 +358,37 @@ function ConferencePage() {
             className="flex flex-col gap-4 border-t border-primary/10 px-[5vw] pb-4 pt-3 text-[14px] font-medium md:hidden"
           >
             <a
-              href="#programme"
-              className="text-primary/75 transition-colors hover:text-gold"
+              href="#about"
               onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              About
+            </a>
+            <a
+              href="#programme"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
             >
               Programme
             </a>
             <a
               href="#speakers"
-              className="text-primary/75 transition-colors hover:text-gold"
               onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
             >
               Speakers
             </a>
             <a
               href="#siderooms"
-              className="text-primary/75 transition-colors hover:text-gold"
               onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
             >
               Side Rooms
             </a>
             <a
-              href="#venue"
-              className="text-primary/75 transition-colors hover:text-gold"
-              onClick={() => setMobileOpen(false)}
-            >
-              Venue
-            </a>
-            <a
               href="#register"
-              className="display mt-2 bg-primary px-5 py-2.5 text-center text-[13px] font-semibold text-primary-foreground"
               onClick={() => setMobileOpen(false)}
+              className="display bg-primary px-5 py-2.5 text-center text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-panel"
             >
               Register
             </a>
@@ -370,8 +427,8 @@ function ConferencePage() {
               </h1>
               <div className="mt-7 grid gap-6 sm:grid-cols-[1.2fr_1fr]">
                 <p className="max-w-[46ch] text-[17px] leading-relaxed text-primary-foreground/78">
-                  Building a National Position on Home Care for Nigeria. A one-day national policy
-                  convening hosted by The Purple Global Mission.
+                  Building a National Position on Home Care for Nigeria. A one day national policy
+                  convening, hosted by The Purple Global Mission.
                 </p>
                 <p className="display border-l-2 border-gold pl-4 text-[18px] leading-snug font-medium text-gold">
                   You cannot finance care you cannot count.
@@ -382,13 +439,13 @@ function ConferencePage() {
                   href="#register"
                   className="display bg-gold px-7 py-3.5 text-[14px] font-semibold tracking-[0.02em] text-primary transition-colors hover:bg-gold-bright"
                 >
-                  Reserve your place
+                  Register now
                 </a>
                 <a
                   href="#programme"
                   className="display border-[1.5px] border-primary-foreground/30 px-7 py-3.5 text-[14px] font-semibold text-primary-foreground transition-colors hover:border-gold hover:text-gold"
                 >
-                  See the day
+                  View the full programme
                 </a>
               </div>
             </div>
@@ -399,225 +456,577 @@ function ConferencePage() {
                   Event details
                 </span>
                 <span className="display text-[11px] font-semibold tracking-[0.2em] text-primary-foreground/55 uppercase">
-                  Live countdown
+                  Third edition
                 </span>
               </div>
-
-              <div className="grid grid-cols-4 gap-3 text-center">
-                {(["days", "hours", "minutes", "seconds"] as const).map((unit) => (
-                  <div key={unit}>
-                    <span className="display block text-[clamp(28px,4vw,44px)] font-bold leading-none text-primary-foreground tabular-nums">
-                      {String(countdown[unit]).padStart(2, "0")}
-                    </span>
-                    <span className="display mt-1 block text-[10px] font-semibold tracking-[0.15em] text-primary-foreground/45 uppercase">
-                      {unit}
-                    </span>
+              <dl className="divide-y divide-gold/15">
+                {[
+                  ["Date", "Thursday 19 November 2026"],
+                  ["Venue", "IALA Hub, The Chair Centre, Lagos"],
+                  ["Hours", "08:00 to 17:45"],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex items-baseline justify-between gap-6 py-3.5">
+                    <dt className="display text-[11px] font-semibold tracking-[0.16em] text-gold uppercase">
+                      {k}
+                    </dt>
+                    <dd className="text-right text-[14.5px] font-semibold text-primary-foreground">
+                      {v}
+                    </dd>
                   </div>
                 ))}
+              </dl>
+              <div className="relative mt-6 border-t border-gold/15 pt-5">
+                <p className="text-[13px] leading-snug text-primary-foreground/70">
+                  Seats are assigned first come first served against room capacity and confirmed by
+                  email before the day.
+                </p>
               </div>
+            </div>
+          </div>
+        </div>
 
-              <div className="mt-7 space-y-4 border-t border-primary-foreground/10 pt-7">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-gold" />
-                  <div>
-                    <span className="display block text-[11px] font-semibold tracking-[0.15em] text-primary-foreground/45 uppercase">
-                      Date
-                    </span>
-                    <span className="text-[15px] font-medium">Thursday 19 November 2026</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-gold" />
-                  <div>
-                    <span className="display block text-[11px] font-semibold tracking-[0.15em] text-primary-foreground/45 uppercase">
-                      Time
-                    </span>
-                    <span className="text-[15px] font-medium">08:00 - 17:45</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-gold" />
-                  <div>
-                    <span className="display block text-[11px] font-semibold tracking-[0.15em] text-primary-foreground/45 uppercase">
-                      Venue
-                    </span>
-                    <span className="text-[15px] font-medium">
-                      IALA Hub, The Chair Centre, Lagos
-                    </span>
-                  </div>
-                </div>
+        <div className="border-t border-gold/15 bg-primary-foreground/[0.04] backdrop-blur-sm">
+          <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-6 px-[5vw] py-5 sm:gap-10">
+            <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+              Counting down
+            </span>
+            {(
+              [
+                ["days", countdown.days],
+                ["hours", countdown.hours],
+                ["min", countdown.minutes],
+                ["sec", countdown.seconds],
+              ] as const
+            ).map(([label, value]) => (
+              <div key={label} className="flex flex-col items-center">
+                <span className="display text-[32px] font-bold leading-none text-primary-foreground tabular-nums sm:text-[40px]">
+                  {String(value).padStart(2, "0")}
+                </span>
+                <span className="mt-1 text-[10px] font-semibold tracking-[0.18em] text-primary-foreground/50 uppercase">
+                  {label}
+                </span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About the conference */}
+      <section id="about" className="scroll-mt-20 px-[5vw] py-24">
+        <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="relative">
+            <img
+              src="/Conference Image.webp"
+              alt="Care Conference"
+              className="w-full object-cover"
+              style={{ aspectRatio: "4 / 5" }}
+            />
+            <div className="absolute -bottom-6 -right-4 bg-primary px-6 py-4 sm:-right-8">
+              <span className="display block text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+                19 November 2026
+              </span>
+              <span className="display block text-[11px] font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
+                Lagos, Nigeria
+              </span>
+            </div>
+          </div>
+          <div>
+            <Kicker>About the conference</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              More than a conference,
+              <br />a platform for collective
+              <br />
+              <span className="text-gold-dim">leadership</span>
+            </h2>
+            <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-muted-foreground">
+              <p>
+                Care Conference 2026 is a national convening that brings together policymakers,
+                health system leaders, clinicians, innovators, caregivers, investors, researchers,
+                and community advocates committed to strengthening the future of care in Nigeria.
+              </p>
+              <p>
+                At a time when countries around the world are rethinking how care is delivered,
+                coordinated, and sustained, the conference provides a platform for dialogue that
+                connects national priorities with global health conversations on integrated care,
+                workforce development, and Universal Health Coverage.
+              </p>
+            </div>
+            <div className="mt-8 flex items-start gap-4">
+              <span className="mt-1 h-12 w-[3px] shrink-0 bg-gold" />
+              <p className="display text-[17px] leading-snug font-medium text-primary">
+                More than a conference, Care Conference 2026 is a platform for collective
+                leadership, bringing together those who are shaping the next decade of care.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Why this Conference Matters */}
+      <section className="relative border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
+        <img
+          src="/Why this conference matters.webp"
+          alt=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/75" />
+        <div
+          aria-hidden="true"
+          className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary-foreground/[0.03] select-none"
+        >
+          Why
+        </div>
+        <div className="relative mx-auto max-w-4xl">
+          <Kicker onDark>Why this Conference Matters</Kicker>
+          <blockquote className="mt-8">
+            <p className="display text-[clamp(22px,3vw,32px)] leading-[1.35] font-medium tracking-[-0.01em] text-primary-foreground">
+              Care in Nigeria is entering a new phase. Families require stronger support systems,
+              healthcare services increasingly depend on continuity beyond hospital visits, and
+              digital technology is expanding new possibilities for monitoring, coordination, and
+              patient-centered care.
+            </p>
+          </blockquote>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2">
+            <div>
+              <p className="text-[15.5px] leading-relaxed text-primary-foreground/75">
+                As countries advance toward Universal Health Coverage (UHC), a key priority in
+                global health discussions, there is growing recognition that effective health
+                systems must integrate hospitals, home-based care, digital tools, and community
+                support.
+              </p>
+            </div>
+            <div>
+              <p className="text-[15.5px] leading-relaxed text-primary-foreground/75">
+                Across Africa, rising non-communicable diseases and changing health needs are
+                accelerating conversations on how to deliver coordinated, high-quality care
+                throughout a patient&apos;s journey.
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 border-t border-primary-foreground/10 pt-8">
+            <p className="max-w-[60ch] text-[15.5px] leading-relaxed text-primary-foreground/75">
+              Care Conference 2026 brings these global perspectives and African priorities together,
+              convening policymakers, clinicians, innovators, investors, and community leaders to
+              explore how Nigeria can strengthen care systems, support its healthcare workforce, and
+              contribute to the long-term goal of Universal Health Coverage for all.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What Delegates Will Gain */}
+      <section className="px-[5vw] py-24">
+        <div className="grid items-start gap-x-16 gap-y-12 lg:grid-cols-[0.35fr_1fr]">
+          <div className="lg:sticky lg:top-28">
+            <span className="display block text-[80px] font-bold leading-none text-primary/[0.06] sm:text-[120px]">
+              06
+            </span>
+            <Kicker>What Delegates Will Gain</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              Come ready
+              <br />
+              to engage
+            </h2>
+          </div>
+          <div className="space-y-0 divide-y divide-primary/10">
+            {[
+              "Engage in conversations shaping the future of care systems in Nigeria and Africa",
+              "Learn global best practices in integrated, home, and community-based care",
+              "Connect with policymakers, healthcare leaders, innovators, and investors",
+              "Discover innovations in digital health, workforce development, and care delivery",
+              "Contribute to dialogue supporting Universal Health Coverage and system strengthening",
+              "Build partnerships that advance policy, practice, and care solutions",
+            ].map((item, i) => (
+              <div key={item} className="flex gap-6 py-7 first:pt-0 last:pb-0">
+                <span className="display shrink-0 pt-0.5 text-[13px] font-semibold text-gold-dim">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-[17px] leading-relaxed text-muted-foreground lg:text-[18px]">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who Should Attend */}
+      <section className="border-y border-primary/15 px-[5vw] py-24">
+        <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1.2fr_1fr]">
+          <div>
+            <Kicker>Who Should Attend</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              This conference
+              <br />
+              is for <span className="text-gold-dim">you</span>
+            </h2>
+            <p className="mt-5 max-w-[38ch] text-[16px] leading-relaxed text-muted-foreground">
+              Designed for delegates across policy, practice, innovation, and community systems.
+            </p>
+            <div className="mt-8 flex items-start gap-4">
+              <span className="mt-1 h-12 w-[3px] shrink-0 bg-gold" />
+              <p className="text-[15.5px] leading-snug font-medium text-primary">
+                If you are part of the future of health, care, or community systems in Nigeria, this
+                room is for you.
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+              {[
+                "Government officials and regulators",
+                "Hospital and healthcare leaders",
+                "Nurses, doctors, and allied health professionals",
+                "Homecare providers and caregivers",
+                "Health technology founders and product teams",
+                "Development partners and donor organizations",
+                "Investors and strategic funders",
+                "Academics and researchers",
+                "Insurers, HMOs, and healthcare financing institutions",
+                "Civil society, community leaders, and advocacy groups",
+                "Students and emerging professionals",
+              ].map((item) => (
+                <div key={item} className="flex items-baseline gap-2.5">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                  <p className="text-[14.5px] font-medium text-primary/80">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative hidden lg:block">
+            <img
+              src="/Plenary photo.webp"
+              alt="Plenary session"
+              className="w-full object-cover"
+              style={{ aspectRatio: "3 / 4" }}
+            />
+            <div className="absolute -top-4 -left-4 h-full w-full border border-gold/20" />
+          </div>
+        </div>
+      </section>
+
+      {/* Full-bleed image break */}
+      <div className="relative h-[45vh] min-h-[320px] overflow-hidden">
+        <img
+          src="/Conference Image.webp"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-[5vw] text-center">
+          <span className="display mb-4 text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            19 November 2026 &middot; Lagos
+          </span>
+          <p className="display max-w-[44ch] text-[clamp(24px,4vw,48px)] leading-[1.1] font-bold tracking-[-0.02em] text-primary-foreground">
+            One day. One room. One <span className="text-gold">National Position</span>.
+          </p>
+          <span className="mt-6 h-px w-16 bg-gold/50" />
+        </div>
+      </div>
+
       {/* Programme */}
       <section id="programme" className="scroll-mt-20 px-[5vw] py-24">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-14">
-            <Kicker>The day, hour by hour</Kicker>
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.6fr]">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <Kicker>Programme</Kicker>
             <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
               Programme,
               <br />
               19 November 2026
             </h2>
+            <p className="mt-4 max-w-[36ch] text-[15.5px] leading-relaxed text-muted-foreground">
+              One day, one room, one outcome: a Nigerian National Position on Care as
+              Infrastructure, refined in session and transmitted to the National Assembly after the
+              convening.
+            </p>
+            <div className="mt-10 relative hidden lg:block">
+              <img
+                src="/Plenary photo.webp"
+                alt="Plenary session"
+                className="w-full object-cover"
+                style={{ aspectRatio: "1 / 1" }}
+              />
+              <div className="absolute -bottom-4 -right-4 border border-gold/20" />
+            </div>
           </div>
 
-          <ol className="border-t border-primary/15">
-            {PROGRAMME.map((slot) => (
-              <li
-                key={slot.time}
-                className="group grid grid-cols-[56px_1fr] gap-4 border-b border-primary/15 py-7 transition-colors hover:bg-primary/[0.02] sm:grid-cols-[96px_1fr] sm:gap-8"
-              >
-                <div className="display pt-0.5 text-[14px] font-bold tracking-[-0.01em] text-gold-dim">
-                  {slot.time}
-                </div>
-                <div>
-                  <h3 className="text-[18px] leading-snug font-semibold text-primary">
-                    {slot.title}
-                  </h3>
-                  {slot.body && (
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">
-                      {slot.body}
-                    </p>
-                  )}
-                  {slot.tag && (
-                    <span className="mt-2 inline-block border border-gold/30 bg-gold/[0.08] px-2.5 py-0.5 text-[11px] font-semibold tracking-[0.05em] text-gold-dim uppercase">
-                      {slot.tag}
-                    </span>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div>
+            <ol className="border-t border-primary/15">
+              {PROGRAMME.map((slot) => (
+                <li
+                  key={slot.time}
+                  className="group grid grid-cols-[56px_1fr] gap-4 border-b border-primary/15 py-7 transition-colors hover:bg-primary/[0.02] sm:grid-cols-[96px_1fr] sm:gap-8"
+                >
+                  <div className="display pt-0.5 text-[14px] font-bold tracking-[-0.01em] text-gold-dim">
+                    {slot.time}
+                  </div>
+                  <div>
+                    <h3 className="text-[18px] leading-snug font-semibold text-primary">
+                      {slot.title}
+                    </h3>
+                    {slot.body && (
+                      <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-muted-foreground">
+                        {slot.body}
+                      </p>
+                    )}
+                    {slot.tag && (
+                      <span
+                        className={`display mt-3 inline-block border px-2.5 py-1 text-[10.5px] font-semibold tracking-[0.12em] uppercase ${
+                          slot.closed
+                            ? "border-primary/25 bg-primary/[0.05] text-primary/80"
+                            : "border-gold-dim/45 bg-gold/[0.12] text-primary"
+                        }`}
+                      >
+                        {slot.tag}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-6 max-w-[64ch] text-[14px] leading-relaxed text-muted-foreground">
+              Speakers and panellists are announced as they are confirmed. Follow The Purple Global
+              Mission on LinkedIn for confirmations.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Speakers */}
+      {/* Speakers & Panelists */}
       <section
         id="speakers"
         className="scroll-mt-20 bg-primary px-[5vw] py-24 text-primary-foreground"
       >
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-14">
-            <Kicker onDark>Voices in the room</Kicker>
-            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
-              Confirmed speakers and panelists
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {SPEAKERS.map((s) => (
-              <article
-                key={s.name}
-                className="group flex gap-5 border border-gold/10 bg-primary-foreground/[0.03] p-5 transition-colors hover:border-gold/25 hover:bg-primary-foreground/[0.06]"
-              >
-                <div className="relative flex h-20 w-20 shrink-0 items-center justify-center bg-primary-foreground/[0.06]">
-                  <span className="text-[20px] font-bold text-primary-foreground/20">
-                    {s.name
-                      .split(" ")
-                      .map((w) => w[0])
-                      .join("")
-                      .slice(0, 2)}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col">
-                  <span className="display mb-0.5 text-[10.5px] font-semibold tracking-[0.14em] text-gold uppercase">
-                    {s.role}
-                  </span>
-                  <h3 className="text-[18px] leading-snug font-semibold">{s.name}</h3>
-                  <p className="mt-auto pt-2 text-[14px] leading-relaxed text-primary-foreground/60">
-                    {s.topic}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <p className="mt-8 text-[14px] text-primary-foreground/55">
-            Additional speakers and panelists are announced as they are confirmed.
+        <div className="mb-14 max-w-2xl">
+          <Kicker onDark>Speakers & Panelists</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
+            Who&apos;s on stage
+          </h2>
+          <p className="mt-4 max-w-[52ch] text-[15.5px] leading-relaxed text-primary-foreground/70">
+            Policymakers, clinicians, researchers, innovators, and lived experience voices shaping
+            the conversation on care as infrastructure for Nigeria.
           </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {SPEAKERS.map((s) => (
+            <article
+              key={s.name}
+              className="group flex gap-5 border border-gold/10 bg-primary-foreground/[0.03] p-5 transition-colors hover:border-gold/25 hover:bg-primary-foreground/[0.06]"
+            >
+              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center bg-primary-foreground/[0.06]">
+                <span className="text-[20px] font-bold text-primary-foreground/20">
+                  {s.name
+                    .split(" ")
+                    .map((w) => w[0])
+                    .join("")
+                    .slice(0, 2)}
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col">
+                <span className="display mb-0.5 text-[10.5px] font-semibold tracking-[0.14em] text-gold uppercase">
+                  {s.role}
+                </span>
+                <h3 className="text-[16px] leading-snug font-semibold">{s.name}</h3>
+                <p className="mt-0.5 text-[13px] text-primary-foreground/55">{s.org}</p>
+                <p className="mt-auto pt-2 text-[13.5px] leading-relaxed text-primary-foreground/50">
+                  {s.topic}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Side Rooms */}
+      {/* What the Conference Will Cover */}
+      <section className="bg-primary px-[5vw] py-24 text-primary-foreground">
+        <div className="mb-16 max-w-2xl">
+          <Kicker onDark>What the Conference Will Cover</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
+            Seven policy layers
+          </h2>
+          <p className="mt-4 max-w-[48ch] text-[15.5px] leading-relaxed text-primary-foreground/70">
+            Each layer addresses a distinct dimension of care system building. Together they form
+            the framework for the National Position.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article className="row-span-2 border border-gold/15 bg-primary-foreground/[0.04] p-8 transition-colors hover:border-gold/25">
+            <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
+              Layer 01
+            </span>
+            <h3 className="mt-4 text-[22px] font-semibold leading-snug">Policy and Governance</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-primary-foreground/70">
+              How regulation, standards, and leadership can strengthen safe, accountable, and
+              scalable care systems. The foundational layer that enables every other investment to
+              work.
+            </p>
+          </article>
+          {[
+            {
+              num: "02",
+              title: "Infrastructure and Systems Design",
+              body: "How hospitals, homecare, community services, and referral pathways can work together more effectively.",
+            },
+            {
+              num: "03",
+              title: "Digital Health and Technology",
+              body: "How digital tools, AI, remote monitoring, and care coordination platforms can improve quality and continuity.",
+            },
+            {
+              num: "04",
+              title: "Workforce and Care Economy",
+              body: "How Nigeria can build, support, and retain a strong care workforce for long-term system resilience.",
+            },
+            {
+              num: "05",
+              title: "Community and Cultural Competence",
+              body: "How trust, family structures, local realities, and cultural sensitivity shape care delivery and outcomes.",
+            },
+            {
+              num: "06",
+              title: "Non-Communicable Disease Management",
+              body: "How care systems can respond to the rising burden of chronic illness across Nigeria and Africa.",
+            },
+            {
+              num: "07",
+              title: "Maternal and Child Health",
+              body: "How integrated care models can better support mothers, infants, children, and families across care journeys.",
+            },
+          ].map((topic) => (
+            <article
+              key={topic.title}
+              className="border border-gold/10 bg-primary-foreground/[0.03] p-6 transition-colors hover:border-gold/20"
+            >
+              <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold/60 uppercase">
+                Layer {topic.num}
+              </span>
+              <h3 className="mt-2 text-[17px] font-semibold leading-snug">{topic.title}</h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-primary-foreground/65">
+                {topic.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* What to Expect as a Delegate */}
+      <section className="border-y border-gold/20 bg-[#1a0f40] px-[5vw] py-24 text-primary-foreground">
+        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.4fr_1fr]">
+          <div>
+            <Kicker onDark>What to Expect</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
+              Your conference
+              <br />
+              experience
+            </h2>
+          </div>
+          <div className="space-y-0 divide-y divide-primary-foreground/10">
+            {[
+              {
+                num: "01",
+                title: "Main Plenary Sessions",
+                body: "High-level conversations, keynote addresses, and national framing on the future of care in Nigeria.",
+              },
+              {
+                num: "02",
+                title: "Focus Studios",
+                body: "Smaller thematic sessions dedicated to policy, digital health, workforce, innovation, and community-centered care.",
+              },
+              {
+                num: "03",
+                title: "Innovation Exhibition",
+                body: "A curated showcase of healthcare tools, technologies, services, and ideas shaping the future of care delivery.",
+              },
+              {
+                num: "04",
+                title: "Partner & Networking Spaces",
+                body: "Spaces for collaboration, introductions, sponsor engagement, and strategic meetings.",
+              },
+              {
+                num: "05",
+                title: "Conference Resources",
+                body: "Access to downloadable materials, updates, announcements, and future communication before and after the event.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-6 py-7 first:pt-0 last:pb-0">
+                <span className="display shrink-0 pt-1 text-[13px] font-semibold text-gold">
+                  {item.num}
+                </span>
+                <div>
+                  <h3 className="text-[18px] font-semibold leading-snug">{item.title}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-primary-foreground/70">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote break */}
+      <div className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
+        <blockquote className="mx-auto max-w-3xl text-center">
+          <p className="display text-[clamp(20px,2.8vw,30px)] leading-[1.4] font-medium tracking-[-0.01em] text-primary italic">
+            &ldquo;You cannot finance care you cannot count.&rdquo;
+          </p>
+          <cite className="mt-4 block text-[13px] font-semibold not-italic text-gold-dim">
+            The Care Conference 2026
+          </cite>
+        </blockquote>
+      </div>
+
+      {/* Side rooms */}
       <section
         id="siderooms"
         className="scroll-mt-20 bg-primary px-[5vw] py-24 text-primary-foreground"
       >
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-14">
-            <Kicker onDark>Four parallel policy sessions</Kicker>
-            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em]">
-              The Side Rooms
-            </h2>
-            <p className="mt-4 max-w-[56ch] text-[15.5px] leading-relaxed text-primary-foreground/72">
-              At 14:15, every delegate attends one focused room. Selections are honoured first come,
-              first served.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {ROOMS.map((room) => (
-              <article
-                key={room.letter}
-                className="border border-gold/15 bg-primary-foreground/[0.04] p-6 transition-colors hover:border-gold/25 sm:p-7"
-              >
+        <div className="mb-16 max-w-2xl">
+          <Kicker onDark>Four parallel sessions</Kicker>
+          <h2 className="text-[clamp(28px,3.6vw,44px)] leading-[1.03] font-bold tracking-[-0.01em]">
+            The Side Rooms
+          </h2>
+          <p className="mt-4 max-w-[56ch] text-[15.5px] leading-relaxed text-primary-foreground/72">
+            At 14:15 the convening breaks into four parallel policy sessions, one for each remaining
+            layer of the framework. Every delegate attends one.
+          </p>
+        </div>
+        <div className="space-y-6">
+          {ROOMS.map((room, i) => (
+            <article
+              key={room.letter}
+              className={`grid gap-0 overflow-hidden border border-gold/15 sm:grid-cols-[1fr_1.3fr] ${
+                i % 2 === 1 ? "sm:[direction:rtl]" : ""
+              }`}
+            >
+              <div className="relative bg-primary-foreground/[0.04] sm:[direction:ltr]">
+                <img
+                  src={`/room-${room.letter.slice(-1).toLowerCase()}.svg`}
+                  alt={room.title}
+                  className="h-full w-full object-cover"
+                  style={{ aspectRatio: "16 / 10" }}
+                />
+              </div>
+              <div className="flex flex-col justify-center p-7 sm:p-9 sm:[direction:ltr]">
                 <div className="display mb-3 flex items-center gap-3 text-[11px] font-bold tracking-[0.18em] text-gold uppercase">
-                  <span className="flex h-8 w-8 items-center justify-center border border-gold/30 text-[14px] font-bold">
-                    {room.letter}
-                  </span>
+                  <span>{room.letter}</span>
+                  <span className="h-px flex-1 bg-gold/25" />
                 </div>
-                <h3 className="text-[20px] leading-[1.15] font-semibold tracking-[-0.01em]">
+                <h3 className="text-[22px] leading-[1.15] font-semibold tracking-[-0.01em]">
                   {room.title}
                 </h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-primary-foreground/65">
+                <div className="mt-2 text-[13px] font-medium text-gold/80">{room.layer}</div>
+                <p className="mt-4 text-[15px] leading-relaxed text-primary-foreground/72">
                   {room.body}
                 </p>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
+        <p className="mt-10 max-w-[72ch] text-[14px] leading-relaxed text-primary-foreground/60">
+          Side rooms run once, in parallel. Selections are honoured first come first served against
+          room capacity, which is why early registration matters. Second choices apply only when a
+          first choice room is full.
+        </p>
       </section>
-
-      {/* Venue */}
-      <section id="venue" className="scroll-mt-20 px-[5vw] py-24">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-10">
-            <Kicker>The venue</Kicker>
-            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
-              IALA Hub at The Chair Centre, Lagos
-            </h2>
-            <p className="mt-4 max-w-[52ch] text-[16px] leading-relaxed text-muted-foreground">
-              A serious civic setting for shaping Nigeria&apos;s national position on home care in
-              one focused day.
-            </p>
-          </div>
-          <div className="relative">
-            <img
-              src="/Conference Image.webp"
-              alt="IALA Hub conference venue in Lagos"
-              className="w-full object-cover"
-              style={{ aspectRatio: "16 / 9" }}
-            />
-            <div className="absolute -bottom-4 -right-4 border border-gold/20" />
-          </div>
-        </div>
-      </section>
-
-      {/* Register CTA */}
-      <div className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <Kicker>Be part of the national position</Kicker>
-          <p className="display text-[clamp(20px,2.8vw,30px)] leading-[1.4] font-medium tracking-[-0.01em] text-primary">
-            Seats are assigned first come, first served and confirmed by email.
-          </p>
-          <a
-            href="#register"
-            className="display mt-8 inline-block bg-gold px-8 py-4 text-[14px] font-semibold tracking-[0.02em] text-primary transition-colors hover:bg-gold-bright"
-          >
-            Register now
-          </a>
-        </div>
-      </div>
 
       {/* Register */}
       <section id="register" className="scroll-mt-20 px-[5vw] py-16">
@@ -944,19 +1353,82 @@ function ConferencePage() {
 
       {/* Colophon */}
       <footer className="border-t border-primary/15 bg-primary px-[5vw] py-14 text-[14.5px] text-primary-foreground/85">
-        <div className="mx-auto max-w-3xl text-center">
-          <img
-            src="/cropped-3-768x242.webp"
-            alt="The Purple Global Mission"
-            className="mx-auto mb-4 h-8 w-auto"
-          />
-          <p className="text-[13px] text-primary-foreground/60">
-            Care Conference 2026 &mdash; Purple Global Mission
-          </p>
-          <p className="mt-1 text-[12px] text-primary-foreground/45">
-            Third Edition &middot; IALA Hub, Lagos
-          </p>
+        <div className="grid gap-y-9 border-b border-gold/25 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-1">
+            <img
+              src="/cropped-3-768x242.webp"
+              alt="The Purple Global Mission"
+              className="mb-4 h-8 w-auto"
+            />
+            <p className="text-[13px] leading-relaxed text-primary-foreground/60">
+              An independent, non partisan convener
+              <br />
+              <a
+                href="https://www.purpleglobalmission.org"
+                className="underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold"
+              >
+                www.purpleglobalmission.org
+              </a>
+            </p>
+          </div>
+          <div>
+            <h4 className="display mb-3 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
+              Contact
+            </h4>
+            <p className="leading-relaxed">
+              <a
+                href={`mailto:${CONF_EMAIL}`}
+                className="underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold"
+              >
+                {CONF_EMAIL}
+              </a>
+              <br />
+              +234 704 015 9577
+            </p>
+          </div>
+          <div>
+            <h4 className="display mb-3 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
+              Venue
+            </h4>
+            <p className="leading-relaxed">
+              IALA Hub, The Chair Centre
+              <br />
+              Lagos, Nigeria
+              <br />
+              Thursday 19 November 2026
+            </p>
+          </div>
+          <div>
+            <h4 className="display mb-3 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
+              Quick links
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#about" className="transition-colors hover:text-gold">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#programme" className="transition-colors hover:text-gold">
+                  Programme
+                </a>
+              </li>
+              <li>
+                <a href="#siderooms" className="transition-colors hover:text-gold">
+                  Side Rooms
+                </a>
+              </li>
+              <li>
+                <a href="#register" className="transition-colors hover:text-gold">
+                  Register
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+        <p className="mt-8 text-[12.5px] text-primary-foreground/55">
+          © 2026 The Purple Global Mission. All rights reserved.
+        </p>
       </footer>
     </div>
   );
