@@ -337,6 +337,12 @@ function ConferencePage() {
               Side Rooms
             </a>
             <a
+              href="#venue"
+              className="border-b border-transparent pb-0.5 text-primary/75 transition-colors hover:border-gold hover:text-primary"
+            >
+              Venue
+            </a>
+            <a
               href="#register"
               className="display bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-panel"
             >
@@ -384,6 +390,13 @@ function ConferencePage() {
               className="text-primary/75 transition-colors hover:text-primary"
             >
               Side Rooms
+            </a>
+            <a
+              href="#venue"
+              onClick={() => setMobileOpen(false)}
+              className="text-primary/75 transition-colors hover:text-primary"
+            >
+              Venue
             </a>
             <a
               href="#register"
@@ -512,16 +525,16 @@ function ConferencePage() {
       </section>
 
       {/* About the conference */}
-      <section id="about" className="scroll-mt-20 px-[5vw] py-24">
+      <section id="about" className="scroll-mt-20 bg-secondary/50 px-[5vw] py-24">
         <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.2fr]">
           <div className="relative">
             <img
               src="/Conference Image.webp"
               alt="Care Conference"
-              className="w-full object-cover"
+              className="w-full object-cover shadow-lg"
               style={{ aspectRatio: "4 / 5" }}
             />
-            <div className="absolute -bottom-6 -right-4 bg-primary px-6 py-4 sm:-right-8">
+            <div className="absolute -bottom-6 -right-4 bg-primary px-6 py-4 shadow-lg sm:-right-8">
               <span className="display block text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
                 19 November 2026
               </span>
@@ -563,13 +576,17 @@ function ConferencePage() {
       </section>
 
       {/* Why this Conference Matters */}
-      <section className="relative border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
+      <section className="relative overflow-hidden border-y border-primary/15 px-[5vw] py-24 text-primary-foreground">
         <img
           src="/Why this conference matters.webp"
           alt=""
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/75" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/80" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/40 via-transparent to-primary/60"
+        />
         <div
           aria-hidden="true"
           className="absolute -top-20 -right-20 text-[280px] font-bold leading-none text-primary-foreground/[0.03] select-none"
@@ -615,7 +632,7 @@ function ConferencePage() {
       </section>
 
       {/* What Delegates Will Gain */}
-      <section className="px-[5vw] py-24">
+      <section className="border-b border-primary/15 px-[5vw] py-24">
         <div className="grid items-start gap-x-16 gap-y-12 lg:grid-cols-[0.35fr_1fr]">
           <div className="lg:sticky lg:top-28">
             <span className="display block text-[80px] font-bold leading-none text-primary/[0.06] sm:text-[120px]">
@@ -628,7 +645,7 @@ function ConferencePage() {
               to engage
             </h2>
           </div>
-          <div className="space-y-0 divide-y divide-primary/10">
+          <div className="space-y-0 divide-y divide-primary/10 border-t border-primary/10 lg:border-t-0 lg:border-l lg:pl-16 lg:border-primary/10">
             {[
               "Engage in conversations shaping the future of care systems in Nigeria and Africa",
               "Learn global best practices in integrated, home, and community-based care",
@@ -651,7 +668,7 @@ function ConferencePage() {
       </section>
 
       {/* Who Should Attend */}
-      <section className="border-y border-primary/15 px-[5vw] py-24">
+      <section className="border-y border-primary/15 bg-secondary/30 px-[5vw] py-24">
         <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <Kicker>Who Should Attend</Kicker>
@@ -723,7 +740,7 @@ function ConferencePage() {
       </div>
 
       {/* Programme */}
-      <section id="programme" className="scroll-mt-20 px-[5vw] py-24">
+      <section id="programme" className="scroll-mt-20 bg-secondary/30 px-[5vw] py-24">
         <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.6fr]">
           <div className="lg:sticky lg:top-24 lg:self-start">
             <Kicker>Programme</Kicker>
@@ -809,10 +826,10 @@ function ConferencePage() {
           {SPEAKERS.map((s) => (
             <article
               key={s.name}
-              className="group flex gap-5 border border-gold/10 bg-primary-foreground/[0.03] p-5 transition-colors hover:border-gold/25 hover:bg-primary-foreground/[0.06]"
+              className="group flex gap-5 border border-gold/10 bg-primary-foreground/[0.03] p-5 transition-all duration-300 hover:border-gold/25 hover:bg-primary-foreground/[0.06] hover:shadow-lg hover:shadow-primary/10"
             >
-              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center bg-primary-foreground/[0.06]">
-                <span className="text-[20px] font-bold text-primary-foreground/20">
+              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center bg-gradient-to-br from-gold/20 to-gold/5">
+                <span className="text-[20px] font-bold text-primary-foreground/30">
                   {s.name
                     .split(" ")
                     .map((w) => w[0])
@@ -848,7 +865,7 @@ function ConferencePage() {
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <article className="row-span-2 border border-gold/15 bg-primary-foreground/[0.04] p-8 transition-colors hover:border-gold/25">
+          <article className="row-span-2 border border-gold/15 bg-primary-foreground/[0.04] p-8 transition-all duration-300 hover:border-gold/25 hover:bg-primary-foreground/[0.06]">
             <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold uppercase">
               Layer 01
             </span>
@@ -893,7 +910,7 @@ function ConferencePage() {
           ].map((topic) => (
             <article
               key={topic.title}
-              className="border border-gold/10 bg-primary-foreground/[0.03] p-6 transition-colors hover:border-gold/20"
+              className="border border-gold/10 bg-primary-foreground/[0.03] p-6 transition-all duration-300 hover:border-gold/20 hover:bg-primary-foreground/[0.05]"
             >
               <span className="display text-[11px] font-semibold tracking-[0.2em] text-gold/60 uppercase">
                 Layer {topic.num}
@@ -918,7 +935,7 @@ function ConferencePage() {
               experience
             </h2>
           </div>
-          <div className="space-y-0 divide-y divide-primary-foreground/10">
+          <div className="space-y-0 divide-y divide-primary-foreground/10 border-l border-primary-foreground/10 pl-0 lg:pl-12">
             {[
               {
                 num: "01",
@@ -963,12 +980,18 @@ function ConferencePage() {
       </section>
 
       {/* Quote break */}
-      <div className="border-y border-primary/15 bg-secondary px-[5vw] py-16">
-        <blockquote className="mx-auto max-w-3xl text-center">
-          <p className="display text-[clamp(20px,2.8vw,30px)] leading-[1.4] font-medium tracking-[-0.01em] text-primary italic">
+      <div className="relative border-y border-primary/15 bg-secondary px-[5vw] py-20">
+        <div
+          aria-hidden="true"
+          className="absolute top-8 left-[10%] text-[200px] font-bold leading-none text-primary/[0.04] select-none"
+        >
+          &ldquo;
+        </div>
+        <blockquote className="relative mx-auto max-w-3xl text-center">
+          <p className="display text-[clamp(22px,3vw,34px)] leading-[1.35] font-medium tracking-[-0.01em] text-primary italic">
             &ldquo;You cannot finance care you cannot count.&rdquo;
           </p>
-          <cite className="mt-4 block text-[13px] font-semibold not-italic text-gold-dim">
+          <cite className="mt-5 block text-[13px] font-semibold not-italic text-gold-dim">
             The Care Conference 2026
           </cite>
         </blockquote>
@@ -993,7 +1016,7 @@ function ConferencePage() {
           {ROOMS.map((room, i) => (
             <article
               key={room.letter}
-              className={`grid gap-0 overflow-hidden border border-gold/15 sm:grid-cols-[1fr_1.3fr] ${
+              className={`group grid gap-0 overflow-hidden border border-gold/15 transition-all duration-300 hover:border-gold/25 hover:shadow-lg hover:shadow-primary/10 sm:grid-cols-[1fr_1.3fr] ${
                 i % 2 === 1 ? "sm:[direction:rtl]" : ""
               }`}
             >
@@ -1026,6 +1049,67 @@ function ConferencePage() {
           room capacity, which is why early registration matters. Second choices apply only when a
           first choice room is full.
         </p>
+      </section>
+
+      {/* Venue */}
+      <section
+        id="venue"
+        className="scroll-mt-20 border-y border-primary/15 bg-secondary/30 px-[5vw] py-24"
+      >
+        <div className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1.2fr_1fr]">
+          <div>
+            <Kicker>The venue</Kicker>
+            <h2 className="text-[clamp(28px,3.6vw,42px)] leading-[1.05] font-bold tracking-[-0.01em] text-primary">
+              IALA Hub at The Chair Centre, Lagos
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-[16px] leading-relaxed text-muted-foreground">
+              A serious civic setting for shaping Nigeria&apos;s national position on home care in
+              one focused day.
+            </p>
+            <div className="mt-8 space-y-4">
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
+                <div>
+                  <span className="display block text-[11px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+                    Address
+                  </span>
+                  <span className="text-[15px] font-medium text-primary">
+                    IALA Hub, The Chair Centre, Lagos
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
+                <div>
+                  <span className="display block text-[11px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+                    Date
+                  </span>
+                  <span className="text-[15px] font-medium text-primary">
+                    Thursday 19 November 2026
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
+                <div>
+                  <span className="display block text-[11px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+                    Time
+                  </span>
+                  <span className="text-[15px] font-medium text-primary">08:00 - 17:45</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative hidden lg:block">
+            <img
+              src="/Conference Image.webp"
+              alt="IALA Hub conference venue in Lagos"
+              className="w-full object-cover shadow-lg"
+              style={{ aspectRatio: "16 / 10" }}
+            />
+            <div className="absolute -bottom-4 -right-4 border border-gold/20" />
+          </div>
+        </div>
       </section>
 
       {/* Register */}
@@ -1416,6 +1500,11 @@ function ConferencePage() {
               <li>
                 <a href="#siderooms" className="transition-colors hover:text-gold">
                   Side Rooms
+                </a>
+              </li>
+              <li>
+                <a href="#venue" className="transition-colors hover:text-gold">
+                  Venue
                 </a>
               </li>
               <li>
